@@ -81,6 +81,7 @@ Configure: cmake
 ConfigOptions:
   - '-B%{_builddir}/_build'
   - '-DSDL_BACKEND=SDL2'
+  # compiles but does not work on aarch64
   # '-DOPENGL_BACKEND=GLES'
   # '-DOPENGL_BACKEND=OpenGL'
   - '-DLIB_DIR=%{_libdir}'
