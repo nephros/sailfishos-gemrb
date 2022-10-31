@@ -119,8 +119,6 @@ desktop-file-install --delete-original       \
 %{_datadir}/icons/*/scalable/apps/%{name}.svg
 %dir %{_sysconfdir}/%{name}
 %{_sysconfdir}/%{name}/*
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/*
 %{_datadir}/metainfo/*
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
