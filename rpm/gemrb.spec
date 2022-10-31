@@ -29,6 +29,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  python3-base >= 3.3
 BuildRequires:  python3-libs >= 3.3
+BuildRequires:  python3-devel
 BuildRequires:  SDL2-devel
 BuildRequires:  SDL2_mixer-devel
 
