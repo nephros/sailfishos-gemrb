@@ -82,12 +82,22 @@ ConfigOptions:
   - '-B%{_builddir}/_build'
   - '-DSDL_BACKEND=SDL2'
   - '-DOPENGL_BACKEND=GLES'
+  - '-DLIB_DIR=%{_libdir}/%{name}'
+  - '-DPLUGIN_DIR=%{_libdir}/%{name}/plugins/'
 Builder: none
 NoIconCache: true
 #BuildArch: noarch
 #AutoSubPackages:
 #  - doc
 Files:
-  - '%license LICENSE'
+  - '%license COPYING'
   - '%{_bindir}/*'
+  - '%{_datadir}/applications/%{name}.desktop'
+  - '%{_datadir}/icons/*/scalable/apps/%{name}.svg'
+  - '%dir %{_sysconfdir}/%{name}'
+  - '%{_sysconfdir}/%{name}/*'
+  - '%dir %{_libdir}/%{name}'
+  - '%{_libdir}/%{name}/*'
+  - '%{_datadir}/metainfo/*'
   - '%dir %{_datadir}/%{name}'
+  - '%{_datadir}/%{name}/*'

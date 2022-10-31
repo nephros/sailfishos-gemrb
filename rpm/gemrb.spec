@@ -34,6 +34,7 @@ BuildRequires:  python3-libs >= 3.3
 BuildRequires:  python3-devel
 BuildRequires:  SDL2-devel
 BuildRequires:  SDL2_mixer-devel
+BuildRequires:  desktop-file-utils
 
 %description
 GemRB (Game Engine Made with preRendered Background) is a portable
@@ -82,7 +83,9 @@ Url:
 %cmake .  \
     -B%{_builddir}/_build \
     -DSDL_BACKEND=SDL2 \
-    -DOPENGL_BACKEND=GLES
+    -DOPENGL_BACKEND=GLES \
+    -DLIB_DIR=%{_libdir}/%{name} \
+    -DPLUGIN_DIR=%{_libdir}/%{name}/plugins/
 
 
 # >> build post
@@ -100,12 +103,27 @@ rm -rf %{buildroot}
 pushd %{_builddir}/_build
 %make_install
 popd
+rm -rf %{buildroot}/%{_docdir}
+rm -rf %{buildroot}/%{_mandir}
+rm -rf %{buildroot}/%{_datadir}/pixmaps/%{name}.png
 # << install post
+
+desktop-file-install --delete-original       \
+  --dir %{buildroot}%{_datadir}/applications             \
+   %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
 %defattr(-,root,root,-)
-%license LICENSE
+%license COPYING
 %{_bindir}/*
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/*/scalable/apps/%{name}.svg
+%dir %{_sysconfdir}/%{name}
+%{_sysconfdir}/%{name}/*
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/*
+%{_datadir}/metainfo/*
 %dir %{_datadir}/%{name}
+%{_datadir}/%{name}/*
 # >> files
 # << files
