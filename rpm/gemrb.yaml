@@ -69,6 +69,7 @@ PkgBR:
   - SDL2-devel
   - SDL2_mixer-devel
 PkgConfigBR:
+  - gl # for OpenGL
   - egl # for KHR/khrplatform.h
   - freetype2
   - glesv2
