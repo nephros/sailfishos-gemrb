@@ -28,7 +28,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  python3-base >= 3.3
 BuildRequires:  SDL2-devel
 BuildRequires:  SDL2_mixer-devel
-BuildRequires:  desktop-file-utils
 
 %description
 GemRB (Game Engine Made with preRendered Background) is a portable
@@ -73,38 +72,32 @@ Url:
 # << build pre
 
 %cmake .  \
+    -B${PWD}/_build \
     -DSDL_BACKEND=SDL2 \
     -DOPENGL_BACKEND=GLES
 
-make %{?_smp_mflags}
 
 # >> build post
+pushd %{_builddir}/_build
+%make_build
+popd
 # << build post
 
 %install
 rm -rf %{buildroot}
 # >> install pre
 # << install pre
-%make_install
 
 # >> install post
-# mangle version info
-sed -i -e "s/unreleased/%{version}/" %{buildroot}%{_datadir}/%{name}/qml/%{name}.qml
+pushd %{_builddir}/_build
+%make_install
+popd
 # << install post
-
-desktop-file-install --delete-original       \
-  --dir %{buildroot}%{_datadir}/applications             \
-   %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
 %defattr(-,root,root,-)
 %license LICENSE
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/*/*/apps/%{name}.png
-%{_datadir}/icons/*/*/apps/%{name}.svg
-%{_datadir}/themes/sailfish-default/meegotouch/*/icons/*.png
+%{_bindir}/*
 %dir %{_datadir}/%{name}
-%{_datadir}/%{name}/translations/*.qm
-%{_datadir}/%{name}/qml/*
 # >> files
 # << files
