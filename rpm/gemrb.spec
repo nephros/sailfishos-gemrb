@@ -19,6 +19,8 @@ Source100:  gemrb.yaml
 Source101:  gemrb-rpmlintrc
 Patch0:     SDL2_cmake_fix.patch
 Requires:   libsailfishapp-launcher
+Requires(post): /sbin/ldconfig
+Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glesv2)
@@ -111,6 +113,10 @@ desktop-file-install --delete-original       \
   --dir %{buildroot}%{_datadir}/applications             \
    %{buildroot}%{_datadir}/applications/*.desktop
 
+%post -p /sbin/ldconfig
+
+%postun -p /sbin/ldconfig
+
 %files
 %defattr(-,root,root,-)
 %license COPYING
@@ -119,6 +125,8 @@ desktop-file-install --delete-original       \
 %{_datadir}/icons/*/scalable/apps/%{name}.svg
 %dir %{_sysconfdir}/%{name}
 %{_sysconfdir}/%{name}/*
+%{_libdir}/*.so
+%{_libdir}/*.so.*
 %{_datadir}/metainfo/*
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*

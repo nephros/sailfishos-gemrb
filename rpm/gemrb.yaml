@@ -99,6 +99,8 @@ Files:
   - '%{_sysconfdir}/%{name}/*'
   # '%dir %{_libdir}/%{name}'
   # '%{_libdir}/%{name}/*'
+  - '%{_libdir}/*.so'
+  - '%{_libdir}/*.so.*'
   - '%{_datadir}/metainfo/*'
   - '%dir %{_datadir}/%{name}'
   - '%{_datadir}/%{name}/*'
