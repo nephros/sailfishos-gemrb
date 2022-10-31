@@ -17,6 +17,7 @@ URL:        https://github.com/gemrb/gemrb
 Source0:    %{name}-%{version}.tar.gz
 Source100:  gemrb.yaml
 Source101:  gemrb-rpmlintrc
+Patch0:     SDL2_cmake_fix.patch
 Requires:   libsailfishapp-launcher
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glesv2)
@@ -68,6 +69,8 @@ Url:
 %prep
 %setup -q -n %{name}-%{version}/upstream
 
+# SDL2_cmake_fix.patch
+%patch0 -p1
 # >> setup
 # << setup
 

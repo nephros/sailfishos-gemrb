@@ -56,8 +56,8 @@ RpmLintIgnore:
 #    %if 0%{?sailfishos_version} >= 30400
 #    BuildRequires: some-package
 #    %endif
-#Patches:
-#  - 'baz'
+Patches:
+  - SDL2_cmake_fix.patch
 Requires:
   - libsailfishapp-launcher
 PkgBR:
