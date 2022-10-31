@@ -84,8 +84,8 @@ Url:
     -B%{_builddir}/_build \
     -DSDL_BACKEND=SDL2 \
     -DOPENGL_BACKEND=GLES \
-    -DLIB_DIR=%{_libdir}/%{name} \
-    -DPLUGIN_DIR=%{_libdir}/%{name}/plugins/
+    -DLIB_DIR=%{_libdir} \
+    -DPLUGIN_DIR=%{_datadir}/%{name}/plugins/
 
 
 # >> build post
