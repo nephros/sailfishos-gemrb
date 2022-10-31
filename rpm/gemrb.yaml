@@ -1,0 +1,92 @@
+Name: gemrb
+Summary: open-source implementation of Bioware’s Infinity Engine. 
+Version: 0.9.1
+Release: 0
+Group: Applications
+License: GPLv2
+URL: https://github.com/gemrb/gemrb
+SCM: https://github.com/nephros/sailfishos-gemrb
+Sources:
+    - '%{name}-%{version}.tar.gz'
+Description: |
+    GemRB (Game Engine Made with preRendered Background) is a portable
+    open-source reimplementation of the Infinity Engine that underpinned Baldur's
+    Gate, Icewind Dale and Planescape: Torment. It sports a cleaner design, greater
+    extensibility and several innovations. Would you like to create a game like
+    Baldur's Gate?
+
+    To try it out you either need some of the ORIGINAL game's data or you can
+    get a tiny sneak peek by running the included trivial game demo.
+
+    The original game data has to be installed if you want to see anything but
+    the included trivial demo. On non-windows systems either copy it over from
+    a windows install, use a compatible installer, WINE or extract it manually
+    from the CDs using the unshield tool.
+
+    %if "%{?vendor}" == "chum"
+    PackageName: GemRB Game Engine
+    Type: other
+    PackagerName: nephros
+    Categories:
+     - Game
+    Custom:
+      Repo: %{url}
+      PackagingRepo: https://github.com/nephros/sailfishos-gemrb
+    Icon: %{url}/raw/master/artwork/gemrb-logo.png
+    Url:
+      Homepage: https://gemrb.org/
+      Help: https://gemrb.org/Documentation.html
+      Bugtracker: %{url}/issues
+    %endif
+
+SetupOptions: -q -n %{name}-%{version}/upstream
+RpmLintIgnore:
+  - 'summary-too-long'
+  - 'no-changelogname-tag'
+  - 'invalid-url'
+  - 'desktopfile-without-binary'
+  - 'explicit-lib-dependency'
+#Macros:
+#  - 'foo;bar'
+#  - |
+#    spectacle_bug; hack_fix
+#    # Spectacular spectacle hack:
+#    #   abuse Macros to work around the Macro-deleting bug in 0.32
+#    #   also, add a conditional dep:
+#    %if 0%{?sailfishos_version} >= 30400
+#    BuildRequires: some-package
+#    %endif
+#Patches:
+#  - 'baz'
+Requires:
+  - libsailfishapp-launcher
+PkgBR:
+  - cmake
+  - gcc-c++
+  - python3-base >= 3.3
+  - SDL2-devel
+  - SDL2_mixer-devel
+PkgConfigBR:
+  - freetype2
+  - glesv2
+  - libpng
+  - ogg
+  - zlib
+Configure: cmake
+ConfigOptions:
+  - '-DSDL_BACKEND=SDL2'
+  - '-DOPENGL_BACKEND=GLES'
+#Builder: qmake5
+NoIconCache: true
+#BuildArch: noarch
+#AutoSubPackages:
+#  - doc
+Files:
+  - '%license LICENSE'
+  - '%{_datadir}/applications/%{name}.desktop'
+  - '%{_datadir}/icons/*/*/apps/%{name}.png'
+  - '%{_datadir}/icons/*/*/apps/%{name}.svg'
+  - '%{_datadir}/themes/sailfish-default/meegotouch/*/icons/*.png'
+  - '%dir %{_datadir}/%{name}'
+  - '%{_datadir}/%{name}/translations/*.qm'
+  - '%{_datadir}/%{name}/qml/*'
