@@ -83,7 +83,6 @@ Url:
 %cmake .  \
     -B%{_builddir}/_build \
     -DSDL_BACKEND=SDL2 \
-    -DOPENGL_BACKEND=OpenGL \
     -DLIB_DIR=%{_libdir} \
     -DPLUGIN_DIR=%{_datadir}/%{name}/plugins/
 
