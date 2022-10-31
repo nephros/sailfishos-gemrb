@@ -22,10 +22,13 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(vorbis)
+BuildRequires:  pkgconfig(vorbisfile)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  python3-base >= 3.3
+BuildRequires:  python3-libs >= 3.3
 BuildRequires:  SDL2-devel
 BuildRequires:  SDL2_mixer-devel
 
@@ -72,7 +75,7 @@ Url:
 # << build pre
 
 %cmake .  \
-    -B${PWD}/_build \
+    -B%{_builddir}/_build \
     -DSDL_BACKEND=SDL2 \
     -DOPENGL_BACKEND=GLES
 

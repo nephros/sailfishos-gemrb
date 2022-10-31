@@ -64,6 +64,7 @@ PkgBR:
   - cmake
   - gcc-c++
   - python3-base >= 3.3
+  - python3-libs >= 3.3
   - SDL2-devel
   - SDL2_mixer-devel
 PkgConfigBR:
@@ -71,10 +72,12 @@ PkgConfigBR:
   - glesv2
   - libpng
   - ogg
+  - vorbis
+  - vorbisfile
   - zlib
 Configure: cmake
 ConfigOptions:
-  - '-B${PWD}/_build'
+  - '-B%{_builddir}/_build'
   - '-DSDL_BACKEND=SDL2'
   - '-DOPENGL_BACKEND=GLES'
 Builder: none
