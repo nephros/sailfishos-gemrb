@@ -15,6 +15,7 @@ Group:      Applications
 License:    GPLv2
 URL:        https://github.com/gemrb/gemrb
 Source0:    %{name}-%{version}.tar.gz
+Source1:    GemRB.cfg
 Source100:  gemrb.yaml
 Source101:  gemrb-rpmlintrc
 Patch0:     SDL2_cmake_fix.patch
@@ -86,7 +87,8 @@ Url:
     -B%{_builddir}/_build \
     -DSDL_BACKEND=SDL2 \
     -DLIB_DIR=%{_libdir} \
-    -DPLUGIN_DIR=%{_datadir}/%{name}/plugins/
+    -DPLUGIN_DIR=%{_datadir}/%{name}/plugins/ \
+    -DICON_DIR=%{_datadir}/icons/hicolor/64x64/apps
 
 
 # >> build post
@@ -107,6 +109,8 @@ popd
 rm -rf %{buildroot}/%{_docdir}
 rm -rf %{buildroot}/%{_mandir}
 rm -rf %{buildroot}/%{_datadir}/pixmaps/%{name}.png
+install -D -m644 %SOURCE1 %{buildroot}/%{_sysconfdir}/%{name}/GemRB.cfg
+install -D -m644 %SOURCE2 %{buildroot}%{_datadir}/applications
 # << install post
 
 desktop-file-install --delete-original       \
@@ -123,6 +127,7 @@ desktop-file-install --delete-original       \
 %{_bindir}/*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/*/scalable/apps/%{name}.svg
+%{_datadir}/icons/*/*/apps/*.png
 %dir %{_sysconfdir}/%{name}
 %{_sysconfdir}/%{name}/*
 %{_libdir}/*.so

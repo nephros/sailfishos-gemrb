@@ -8,6 +8,7 @@ URL: https://github.com/gemrb/gemrb
 SCM: https://github.com/nephros/sailfishos-gemrb
 Sources:
     - '%{name}-%{version}.tar.gz'
+    - GemRB.cfg
 Description: |
     GemRB (Game Engine Made with preRendered Background) is a portable
     open-source reimplementation of the Infinity Engine that underpinned Baldur's
@@ -86,6 +87,7 @@ ConfigOptions:
   # '-DOPENGL_BACKEND=OpenGL'
   - '-DLIB_DIR=%{_libdir}'
   - '-DPLUGIN_DIR=%{_datadir}/%{name}/plugins/'
+  - '-DICON_DIR=%{_datadir}/icons/hicolor/64x64/apps'
 Builder: none
 NoIconCache: true
 #BuildArch: noarch
@@ -96,6 +98,7 @@ Files:
   - '%{_bindir}/*'
   - '%{_datadir}/applications/%{name}.desktop'
   - '%{_datadir}/icons/*/scalable/apps/%{name}.svg'
+  - '%{_datadir}/icons/*/*/apps/*.png'
   - '%dir %{_sysconfdir}/%{name}'
   - '%{_sysconfdir}/%{name}/*'
   # '%dir %{_libdir}/%{name}'
