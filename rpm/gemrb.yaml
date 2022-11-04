@@ -78,6 +78,7 @@ PkgConfigBR:
   - vorbis
   - vorbisfile
   - zlib
+Builder: cmake
 Configure: cmake
 ConfigOptions:
   - '-B%{_builddir}/_build'
