@@ -1,0 +1,26 @@
+diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+index 36dc17caf..bee0801ed 100644
+--- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
++++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+@@ -107,6 +107,11 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title)
+ {
+ 	Log(MESSAGE, "SDL 2 Driver", "Creating display");
+ 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "best");
++	Log(MESSAGE, "SDL 2 Driver", "Forcing Landscape Mode");
++	SDL_SetHintWithPriority(SDL_HINT_ORIENTATIONS, "LandscapeRight LandscapeLeft", SDL_HINT_OVERRIDE);
++	SDL_SetHint(SDL_HINT_QTWAYLAND_CONTENT_ORIENTATION , "landscape");
++	Log(MESSAGE, "SDL 2 Driver", "Disabling System Gestures");
++	SDL_SetHint(SDL_HINT_QTWAYLAND_WINDOW_FLAGS, "OverridesSystemGestures");
+ 
+ #if USE_OPENGL_BACKEND
+ #if USE_OPENGL_API
+@@ -124,6 +129,9 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title)
+ #endif
+ 
+ 	Uint32 winFlags = SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE;
++
++	Log(MESSAGE, "SDL 2 Driver", "Forcing HiDPI Mode");
++	winFlags |= SDL_WINDOW_ALLOW_HIGHDPI;
+ #if USE_OPENGL_BACKEND
+ 	winFlags |= SDL_WINDOW_OPENGL;
+ 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);

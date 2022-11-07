@@ -61,6 +61,7 @@ RpmLintIgnore:
 #    %endif
 Patches:
   - SDL2_cmake_fix.patch
+  - SDL2_force_landscape.patch
 Requires:
   - libsailfishapp-launcher
 PkgBR:
