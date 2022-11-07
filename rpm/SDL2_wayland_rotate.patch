@@ -1,0 +1,31 @@
+diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+index 36dc17caf..5c5bc9b9f 100644
+--- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
++++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+@@ -135,6 +135,12 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title)
+ 		return GEM_ERROR;
+ 	}
+ 
++	SDL_SysWMinfo swminfo;
++	SDL_VERSION(&swminfo.version)
++	SDL_GetWindowWMInfo(window, &swminfo);
++	wl_surface *sdl_wl_surface = swminfo.info.wl.surface;
++	wl_surface_set_buffer_transform(sdl_wl_surface, WL_OUTPUT_TRANSFORM_270);
++
+ #ifdef BAKE_ICON
+ 	SetWindowIcon(window);
+ #endif
+diff --git a/gemrb/plugins/SDLVideo/SDL20Video.h b/gemrb/plugins/SDLVideo/SDL20Video.h
+index 6b75560e8..da9e64897 100644
+--- a/gemrb/plugins/SDLVideo/SDL20Video.h
++++ b/gemrb/plugins/SDLVideo/SDL20Video.h
+@@ -24,6 +24,9 @@
+ #include "SDLVideo.h"
+ #include "SDLSurfaceSprite2D.h"
+ 
++#include <SDL2/SDL_syswm.h>
++#include <wayland-client-protocol.h>
++
+ #if USE_OPENGL_BACKEND
+ #include "GLSLProgram.h"
+ #else
