@@ -63,7 +63,8 @@ Patches:
   - SDL2_cmake_fix.patch
   # SDL2_force_landscape.patch
   - SDL2_touch_abs_coord.patch
-  - SDL2_wayland_rotate.patch
+  - SDL2_wayland_rotate_02.patch
+  - SDL2_wayland_rotate_01.patch
 Requires:
   - libsailfishapp-launcher
 PkgBR:
@@ -83,6 +84,7 @@ PkgConfigBR:
   - openal # works with only sdlaudio as well
   - vorbis
   - vorbisfile
+  - wayland-client # for the landscape fix
   - zlib
 Builder: cmake
 Configure: cmake

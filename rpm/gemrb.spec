@@ -21,7 +21,8 @@ Source100:  gemrb.yaml
 Source101:  gemrb-rpmlintrc
 Patch0:     SDL2_cmake_fix.patch
 Patch1:     SDL2_touch_abs_coord.patch
-Patch2:     SDL2_wayland_rotate.patch
+Patch2:     SDL2_wayland_rotate_02.patch
+Patch3:     SDL2_wayland_rotate_01.patch
 Requires:   libsailfishapp-launcher
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
@@ -33,6 +34,7 @@ BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisfile)
+BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -82,8 +84,10 @@ Url:
 %patch0 -p1
 # SDL2_touch_abs_coord.patch
 %patch1 -p1
-# SDL2_wayland_rotate.patch
+# SDL2_wayland_rotate_02.patch
 %patch2 -p1
+# SDL2_wayland_rotate_01.patch
+%patch3 -p1
 # >> setup
 # << setup
 

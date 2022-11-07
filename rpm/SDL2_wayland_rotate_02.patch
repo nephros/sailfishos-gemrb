@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f0596304e..6ad74f95b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -313,6 +313,7 @@ IF(SDL_BACKEND STREQUAL "SDL2")
+ 		#find_package(SDL2 REQUIRED)
+ 		find_package(PkgConfig REQUIRED)
+ 		pkg_search_module(SDL2 REQUIRED sdl2)
++		pkg_search_module(WAYLANDCLIENT REQUIRED wayland-client)
+ 	ENDIF()
+ 	# unify SDL variables, so we don't have to differentiate later
+ 	UNSET(SDL_INCLUDE_DIR CACHE)
