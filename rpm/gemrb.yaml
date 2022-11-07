@@ -76,6 +76,7 @@ PkgConfigBR:
   - glesv2
   - libpng
   - ogg
+  - openal # works with only sdlaudio as well
   - vorbis
   - vorbisfile
   - zlib
