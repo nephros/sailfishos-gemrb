@@ -48,6 +48,7 @@ RpmLintIgnore:
   - 'invalid-url'
   - 'desktopfile-without-binary'
   - 'explicit-lib-dependency'
+  - 'arch-dependent-file-in-usr-share'
 #Macros:
 #  - 'foo;bar'
 #  - |
