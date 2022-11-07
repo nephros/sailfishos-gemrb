@@ -62,6 +62,7 @@ RpmLintIgnore:
 Patches:
   - SDL2_cmake_fix.patch
   - SDL2_force_landscape.patch
+  - SDL2_touch_abs_coord.patch
 Requires:
   - libsailfishapp-launcher
 PkgBR:

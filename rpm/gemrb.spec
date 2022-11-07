@@ -21,6 +21,7 @@ Source100:  gemrb.yaml
 Source101:  gemrb-rpmlintrc
 Patch0:     SDL2_cmake_fix.patch
 Patch1:     SDL2_force_landscape.patch
+Patch2:     SDL2_touch_abs_coord.patch
 Requires:   libsailfishapp-launcher
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
@@ -81,6 +82,8 @@ Url:
 %patch0 -p1
 # SDL2_force_landscape.patch
 %patch1 -p1
+# SDL2_touch_abs_coord.patch
+%patch2 -p1
 # >> setup
 # << setup
 
