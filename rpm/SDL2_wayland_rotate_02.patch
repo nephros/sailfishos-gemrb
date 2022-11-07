@@ -1,17 +1,17 @@
-commit 52d133420ee728497efc44934b4634a179a78cfe
+commit ba2fe15f9f6e45967a943d360db36ca197540313
 Author: nephros <nemo@pgxperiiia10>
-Date:   Mon Nov 7 17:29:45 2022 +0100
+Date:   Mon Nov 7 17:40:09 2022 +0100
 
-    find wayland client using cmake
+    patch2: find wayland-client using cmake
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 2f50bbce6..5a69f3653 100644
+index f0596304e..ee93fd511 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -311,6 +311,7 @@ IF(SDL_BACKEND STREQUAL "SDL2")
- 		SET(SDL2_LIBRARIES debug ${SDL2_LIBRARY_DEBUG} optimized ${SDL2_LIBRARY_RELEASE})
- 	ELSE()
- 		find_package(SDL2 REQUIRED)
+@@ -313,6 +313,7 @@ IF(SDL_BACKEND STREQUAL "SDL2")
+ 		#find_package(SDL2 REQUIRED)
+ 		find_package(PkgConfig REQUIRED)
+ 		pkg_search_module(SDL2 REQUIRED sdl2)
 +		find_package(Wayland REQUIRED)
  	ENDIF()
  	# unify SDL variables, so we don't have to differentiate later
