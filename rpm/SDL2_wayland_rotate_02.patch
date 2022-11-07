@@ -1,17 +1,89 @@
+commit 52d133420ee728497efc44934b4634a179a78cfe
+Author: nephros <nemo@pgxperiiia10>
+Date:   Mon Nov 7 17:29:45 2022 +0100
+
+    find wayland client using cmake
+
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index f0596304e..6ad74f95b 100644
+index 2f50bbce6..5a69f3653 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -313,6 +313,7 @@ IF(SDL_BACKEND STREQUAL "SDL2")
- 		#find_package(SDL2 REQUIRED)
- 		find_package(PkgConfig REQUIRED)
- 		pkg_search_module(SDL2 REQUIRED sdl2)
-+		pkg_search_module(WAYLANDCLIENT REQUIRED wayland-client)
+@@ -311,6 +311,7 @@ IF(SDL_BACKEND STREQUAL "SDL2")
+ 		SET(SDL2_LIBRARIES debug ${SDL2_LIBRARY_DEBUG} optimized ${SDL2_LIBRARY_RELEASE})
+ 	ELSE()
+ 		find_package(SDL2 REQUIRED)
++		find_package(Wayland REQUIRED)
  	ENDIF()
  	# unify SDL variables, so we don't have to differentiate later
  	UNSET(SDL_INCLUDE_DIR CACHE)
+diff --git a/cmake/modules/FindWayland.cmake b/cmake/modules/FindWayland.cmake
+new file mode 100644
+index 000000000..e9009f554
+--- /dev/null
++++ b/cmake/modules/FindWayland.cmake
+@@ -0,0 +1,59 @@
++find_path(
++  WAYLAND_CLIENT_INCLUDE_DIR
++  NAMES wayland-client.h
++)
++
++find_library(
++  WAYLAND_CLIENT_LIBRARY
++  NAMES wayland-client libwayland-client
++)
++
++if(WAYLAND_CLIENT_INCLUDE_DIR AND WAYLAND_CLIENT_LIBRARY)
++  add_library(wayland::client UNKNOWN IMPORTED)
++
++  set_target_properties(
++    wayland::client PROPERTIES
++    INTERFACE_INCLUDE_DIRECTORIES "${WAYLAND_CLIENT_INCLUDE_DIR}"
++    IMPORTED_LINK_INTERFACE_LANGUAGES "C"
++    IMPORTED_LOCATION "${WAYLAND_CLIENT_LIBRARY}"
++  )
++endif()
++
++find_path(
++  WAYLAND_SERVER_INCLUDE_DIR
++  NAMES wayland-server.h
++)
++
++find_library(
++  WAYLAND_SERVER_LIBRARY
++  NAMES wayland-server libwayland-server
++)
++
++if(WAYLAND_SERVER_INCLUDE_DIR AND WAYLAND_SERVER_LIBRARY)
++  add_library(wayland::server UNKNOWN IMPORTED)
++
++  set_target_properties(
++    wayland::server PROPERTIES
++    INTERFACE_INCLUDE_DIRECTORIES "${WAYLAND_SERVER_INCLUDE_DIR}"
++    IMPORTED_LINK_INTERFACE_LANGUAGES "C"
++    IMPORTED_LOCATION "${WAYLAND_SERVER_LIBRARY}"
++  )
++endif()
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(
++  WAYLAND_CLIENT
++  REQUIRED_VARS WAYLAND_CLIENT_LIBRARY WAYLAND_CLIENT_INCLUDE_DIR
++)
++
++find_package_handle_standard_args(
++  WAYLAND_SERVER
++  REQUIRED_VARS WAYLAND_SERVER_LIBRARY WAYLAND_SERVER_INCLUDE_DIR
++)
++
++mark_as_advanced(
++  WAYLAND_CLIENT_INCLUDE_DIR
++  WAYLAND_CLIENT_LIBRARY
++  WAYLAND_SERVER_INCLUDE_DIR
++  WAYLAND_SERVER_LIBRARY
++)
+\ No newline at end of file
 diff --git a/gemrb/plugins/SDLVideo/CMakeLists.txt b/gemrb/plugins/SDLVideo/CMakeLists.txt
-index 93f37e8f0..92ee4ee84 100644
+index 93f37e8f0..073b3fb7c 100644
 --- a/gemrb/plugins/SDLVideo/CMakeLists.txt
 +++ b/gemrb/plugins/SDLVideo/CMakeLists.txt
 @@ -23,7 +23,7 @@ IF(SDL_BACKEND STREQUAL "SDL2")
@@ -19,7 +91,7 @@ index 93f37e8f0..92ee4ee84 100644
  	ELSE()
  		ADD_GEMRB_PLUGIN(SDLVideo ${COMMON_FILES} SDL20Video.cpp)
 -		TARGET_LINK_LIBRARIES(SDLVideo ${SDL_LIBRARY} ${CMAKE_THREAD_LIBS_INIT} ${COCOA_LIBRARY_PATH})
-+		TARGET_LINK_LIBRARIES(SDLVideo ${SDL_LIBRARY} ${CMAKE_THREAD_LIBS_INIT} ${COCOA_LIBRARY_PATH} wayland-client)
++		TARGET_LINK_LIBRARIES(SDLVideo ${SDL_LIBRARY} ${CMAKE_THREAD_LIBS_INIT} ${COCOA_LIBRARY_PATH} ${WAYLAND_CLIENT_LIBRARY})
  	ENDIF()
  
  	IF(MINGW)
