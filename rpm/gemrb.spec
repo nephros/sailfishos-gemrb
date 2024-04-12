@@ -43,6 +43,7 @@ BuildRequires:  python3-libs >= 3.3
 BuildRequires:  python3-devel
 BuildRequires:  SDL2-devel
 BuildRequires:  SDL2_mixer-devel
+BuildRequires:  python3-rpm-macros
 BuildRequires:  desktop-file-utils
 
 %description
@@ -123,6 +124,9 @@ rm -rf %{buildroot}/%{_mandir}
 rm -rf %{buildroot}/%{_datadir}/pixmaps/%{name}.png
 install -D -m644 %SOURCE1 %{buildroot}/%{_sysconfdir}/%{name}/GemRB.cfg
 install -D -m644 %SOURCE2 %{buildroot}%{_datadir}/applications
+
+# fix python shebang so we don't depend on python2:
+sed -i '1s=^#!/usr/bin/\(python\|env python\)[23]\?=#!%{__python3}=' %{buildroot}%{_bindir}/extend2da.py
 # << install post
 
 desktop-file-install --delete-original       \

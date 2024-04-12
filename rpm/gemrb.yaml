@@ -75,6 +75,9 @@ PkgBR:
   - python3-devel
   - SDL2-devel
   - SDL2_mixer-devel
+  # just for shebang fixing
+  - python3-rpm-macros
+
 PkgConfigBR:
   - egl # for KHR/khrplatform.h
   - freetype2
