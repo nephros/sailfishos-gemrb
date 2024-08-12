@@ -19,7 +19,8 @@ Source1:    GemRB.cfg
 Source2:    gemrb.desktop
 Source100:  gemrb.yaml
 Source101:  gemrb-rpmlintrc
-Patch0:     SDL2_wayland_rotate_01.patch
+Patch0:     SDL2_wayland_rotate_02.patch
+Patch1:     SDL2_wayland_rotate_01.patch
 Requires:   libsailfishapp-launcher
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
@@ -78,8 +79,10 @@ Url:
 %prep
 %setup -q -n %{name}-%{version}/upstream
 
-# SDL2_wayland_rotate_01.patch
+# SDL2_wayland_rotate_02.patch
 %patch0 -p1
+# SDL2_wayland_rotate_01.patch
+%patch1 -p1
 # >> setup
 # << setup
 
