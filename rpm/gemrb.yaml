@@ -1,5 +1,5 @@
 Name: gemrb
-Summary: open-source implementation of Bioware’s Infinity Engine. 
+Summary: Open-source implementation of Bioware’s Infinity Engine. 
 Version: 0.9.3
 Release: 0
 Group: Applications
@@ -55,6 +55,7 @@ RpmLintIgnore:
   - 'desktopfile-without-binary'
   - 'explicit-lib-dependency'
   - 'arch-dependent-file-in-usr-share'
+  - 'devel-file-in-non-devel-package'
 #Macros:
 #  - 'foo;bar'
 #  - |
@@ -66,8 +67,6 @@ RpmLintIgnore:
 #    BuildRequires: some-package
 #    %endif
 
-Requires:
-  - libsailfishapp-launcher
 PkgBR:
   - cmake
   - extra-cmake-modules

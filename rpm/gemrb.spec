@@ -8,7 +8,7 @@ Name:       gemrb
 # >> macros
 # << macros
 
-Summary:    open-source implementation of Bioware’s Infinity Engine.
+Summary:    Open-source implementation of Bioware’s Infinity Engine.
 Version:    0.9.3
 Release:    0
 Group:      Applications
@@ -22,7 +22,6 @@ Source101:  gemrb-rpmlintrc
 Patch0:     SDL2_touch_abs_coord.patch
 Patch1:     SDL2_wayland_rotate.patch
 Patch2:     SDL2_wayland_rotate_link_wayland.patch
-Requires:   libsailfishapp-launcher
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glesv2)
