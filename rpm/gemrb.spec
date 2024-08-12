@@ -99,7 +99,9 @@ Url:
     -DSDL_BACKEND=SDL2 \
     -DLIB_DIR=%{_datadir}/%{name}/lib/ \
     -DPLUGIN_DIR=%{_datadir}/%{name}/plugins/ \
-    -DICON_DIR=%{_datadir}/icons/hicolor/64x64/apps
+    -DICON_DIR=%{_datadir}/icons/hicolor/64x64/apps \
+    -DUSE_LIBVLC=OFF \
+    -DSDL_RESOLUTION_INDEPENDANCE=ON
 
 
 # >> build post
