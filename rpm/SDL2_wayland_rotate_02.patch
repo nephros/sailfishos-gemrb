@@ -1,11 +1,14 @@
 diff --git a/cmake/Helpers.cmake b/cmake/Helpers.cmake
-index 6084862b6..c1c3e7efe 100644
+index 6084862b6..06f94d5b4 100644
 --- a/cmake/Helpers.cmake
 +++ b/cmake/Helpers.cmake
-@@ -184,6 +184,7 @@ FUNCTION(CONFIGURE_SDL SDL_BACKEND)
+@@ -184,6 +184,10 @@ FUNCTION(CONFIGURE_SDL SDL_BACKEND)
  			SET(SDL2_LIBRARIES debug ${SDL2_LIBRARY_DEBUG} optimized ${SDL2_LIBRARY_RELEASE})
  		ELSE()
  			FIND_PACKAGE(SDL2 REQUIRED)
++			LIST(APPEND CMAKE_MODULE_PATH "/usr/share/ECM/cmake/")
++			FIND_PACKAGE(ECM REQUIRED NO_MODULE)
++			LIST(APPEND CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 +			FIND_PACKAGE(Wayland REQUIRED)
  		ENDIF()
  	ENDIF()

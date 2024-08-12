@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig(vorbisfile)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  cmake
+BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  python3-base >= 3.3
 BuildRequires:  python3-libs >= 3.3
