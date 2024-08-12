@@ -1,8 +1,8 @@
 diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
-index 36dc17caf..5c5bc9b9f 100644
+index 36dc17caf..d5f9fa4a4 100644
 --- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
 +++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
-@@ -135,6 +135,12 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title)
+@@ -135,6 +135,13 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title)
  		return GEM_ERROR;
  	}
  
@@ -10,6 +10,7 @@ index 36dc17caf..5c5bc9b9f 100644
 +	SDL_VERSION(&swminfo.version)
 +	SDL_GetWindowWMInfo(window, &swminfo);
 +	wl_surface *sdl_wl_surface = swminfo.info.wl.surface;
++	Log(MESSAGE, "SDL 2 Driver", "Rotating Wayland display");
 +	wl_surface_set_buffer_transform(sdl_wl_surface, WL_OUTPUT_TRANSFORM_270);
 +
  #ifdef BAKE_ICON
