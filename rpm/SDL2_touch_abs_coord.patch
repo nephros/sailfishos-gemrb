@@ -1,8 +1,8 @@
 diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
-index 36dc17caf..e4ebd7926 100644
+index 312f2350c..35a071382 100644
 --- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
 +++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
-@@ -625,8 +625,8 @@ int SDL20VideoDriver::GetTouchFingers(TouchEvent::Finger(&fingers)[FINGER_MAX],
+@@ -747,8 +747,8 @@ int SDL20VideoDriver::GetTouchFingers(TouchEvent::Finger(&fingers)[FINGER_MAX],
  		assert(finger);
  
  		fingers[i].id = finger->id;
@@ -11,9 +11,9 @@ index 36dc17caf..e4ebd7926 100644
 +		fingers[i].x = finger->x; // * screenSize.w;
 +		fingers[i].y = finger->y; // * screenSize.h;
  
- 		const TouchEvent::Finger* current = EvntManager->FingerState(finger->id);
+ 		const TouchEvent::Finger* current = EventMgr::FingerState(finger->id);
  		if (current) {
-@@ -683,10 +683,10 @@ int SDL20VideoDriver::ProcessEvent(const SDL_Event & event)
+@@ -807,10 +807,10 @@ int SDL20VideoDriver::ProcessEvent(const SDL_Event & event)
  		case SDL_FINGERUP:
  			{
  				TouchEvent::Finger fingers[1] = { };
@@ -27,4 +27,4 @@ index 36dc17caf..e4ebd7926 100644
 +				fingers[0].deltaY = event.tfinger.dy; //* screenSize.h;
  				fingers[0].id = event.tfinger.fingerId;
  
- 				e = EvntManager->CreateTouchEvent(fingers, 1, event.type == SDL_FINGERDOWN, event.tfinger.pressure);
+ 				e = EventMgr::CreateTouchEvent(fingers, 1, event.type == SDL_FINGERDOWN, event.tfinger.pressure);
