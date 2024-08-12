@@ -99,7 +99,7 @@ ConfigOptions:
   # compiles but does not work on aarch64
   # '-DOPENGL_BACKEND=GLES'
   # '-DOPENGL_BACKEND=OpenGL'
-  - '-DLIB_DIR=%{_datadir}/%{name}/lib/'
+  - '-DLIB_DIR=%{_libdir}'
   - '-DPLUGIN_DIR=%{_datadir}/%{name}/plugins/'
   - '-DICON_DIR=%{_datadir}/icons/hicolor/64x64/apps'
   - '-DUSE_LIBVLC=OFF'
@@ -107,6 +107,8 @@ ConfigOptions:
 Builder: none
 NoIconCache: true
 #BuildArch: noarch
+#AutoSubPackages:
+#  - doc
 Files:
   - '%license COPYING'
   - '%{_bindir}/*'
