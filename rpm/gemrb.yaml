@@ -13,8 +13,8 @@ Sources:
 Patches:
   # SDL2_cmake_fix.patch
   # SDL2_force_landscape.patch
-  # SDL2_touch_abs_coord.patch
-  # SDL2_wayland_rotate_02.patch
+  - SDL2_touch_abs_coord.patch
+  - SDL2_wayland_rotate_02.patch
   - SDL2_wayland_rotate_01.patch
 Description: |
     GemRB (Game Engine Made with preRendered Background) is a portable
@@ -70,6 +70,7 @@ Requires:
   - libsailfishapp-launcher
 PkgBR:
   - cmake
+  - extra-cmake-modules
   - gcc-c++
   - python3-base >= 3.3
   - python3-libs >= 3.3
