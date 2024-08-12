@@ -1,8 +1,8 @@
 diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
-index 36dc17caf..d5f9fa4a4 100644
+index 312f2350c..7dd44a810 100644
 --- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
 +++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
-@@ -135,6 +135,13 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title)
+@@ -172,6 +172,13 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title, bool vsync)
  		return GEM_ERROR;
  	}
  
@@ -17,7 +17,7 @@ index 36dc17caf..d5f9fa4a4 100644
  	SetWindowIcon(window);
  #endif
 diff --git a/gemrb/plugins/SDLVideo/SDL20Video.h b/gemrb/plugins/SDLVideo/SDL20Video.h
-index 6b75560e8..da9e64897 100644
+index 2f952231f..0dcea80bb 100644
 --- a/gemrb/plugins/SDLVideo/SDL20Video.h
 +++ b/gemrb/plugins/SDLVideo/SDL20Video.h
 @@ -24,6 +24,9 @@
