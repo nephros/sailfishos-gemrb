@@ -10,6 +10,12 @@ Sources:
     - '%{name}-%{version}.tar.gz'
     - GemRB.cfg
     - gemrb.desktop
+Patches:
+  # SDL2_cmake_fix.patch
+  # SDL2_force_landscape.patch
+  # SDL2_touch_abs_coord.patch
+  # SDL2_wayland_rotate_02.patch
+  - SDL2_wayland_rotate_01.patch
 Description: |
     GemRB (Game Engine Made with preRendered Background) is a portable
     open-source reimplementation of the Infinity Engine that underpinned Baldur's
@@ -59,12 +65,7 @@ RpmLintIgnore:
 #    %if 0%{?sailfishos_version} >= 30400
 #    BuildRequires: some-package
 #    %endif
-Patches:
-  - SDL2_cmake_fix.patch
-  # SDL2_force_landscape.patch
-  - SDL2_touch_abs_coord.patch
-  - SDL2_wayland_rotate_02.patch
-  - SDL2_wayland_rotate_01.patch
+
 Requires:
   - libsailfishapp-launcher
 PkgBR:
