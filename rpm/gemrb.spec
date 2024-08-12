@@ -20,8 +20,8 @@ Source2:    gemrb.desktop
 Source100:  gemrb.yaml
 Source101:  gemrb-rpmlintrc
 Patch0:     SDL2_touch_abs_coord.patch
-Patch1:     SDL2_wayland_rotate_02.patch
-Patch2:     SDL2_wayland_rotate_01.patch
+Patch1:     SDL2_wayland_rotate.patch
+Patch2:     SDL2_wayland_rotate_link_wayland.patch
 Requires:   libsailfishapp-launcher
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
@@ -84,9 +84,9 @@ Url:
 
 # SDL2_touch_abs_coord.patch
 %patch0 -p1
-# SDL2_wayland_rotate_02.patch
+# SDL2_wayland_rotate.patch
 %patch1 -p1
-# SDL2_wayland_rotate_01.patch
+# SDL2_wayland_rotate_link_wayland.patch
 %patch2 -p1
 # >> setup
 # << setup
