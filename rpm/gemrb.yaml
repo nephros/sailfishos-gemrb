@@ -90,6 +90,7 @@ PkgConfigBR:
   - vorbis
   - vorbisfile
   - wayland-client # for the landscape fix
+  - wayland-egl
   - zlib
 Builder: cmake
 Configure: cmake
