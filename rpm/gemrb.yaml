@@ -68,7 +68,7 @@ RpmLintIgnore:
 #    %endif
 
 PkgBR:
-  - cmake
+  - cmake >= 3.25
   - extra-cmake-modules
   - gcc-c++
   - python3-base >= 3.3
