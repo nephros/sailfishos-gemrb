@@ -24,6 +24,9 @@ Patch1:     SDL2_wayland_rotate.patch
 Patch2:     SDL2_wayland_rotate_link_wayland.patch
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
+BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glesv2)
@@ -40,9 +43,6 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  python3-base >= 3.3
 BuildRequires:  python3-libs >= 3.3
-BuildRequires:  python3-devel
-BuildRequires:  SDL2-devel
-BuildRequires:  SDL2_mixer-devel
 BuildRequires:  python3-rpm-macros
 BuildRequires:  desktop-file-utils
 
