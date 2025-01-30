@@ -9,7 +9,7 @@ Name:       gemrb
 # << macros
 
 Summary:    Open-source implementation of Bioware’s Infinity Engine.
-Version:    0.9.3
+Version:    0.9.4
 Release:    0
 Group:      Applications
 License:    GPLv2
