@@ -11,7 +11,7 @@ Categories=Game;RolePlaying;Emulator;
 Keywords=roleplay;rpg;adventure;game;2d;isometric;gemrb;infinity engine;black isle;
 X-AppImage-Name=GemRB
 X-AppImage-Version=-
-X-Nemo-Applicaton-Type=generic
+X-Nemo-Applicaton-Type=no-invoker
 
 [X-Sailjail]
-Permissions=Downloads;Music
+Permissions=Documents;Downloads;Audio
