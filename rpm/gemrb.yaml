@@ -32,16 +32,19 @@ Description: |
     from the CDs using the unshield tool.
 
     %if "%{?vendor}" == "chum"
-    PackageName: GemRB Game Engine
-    Type: other
-    PackagerName: nephros
+    Title: GemRB Game Engine
+    Type: desktop-application
+    PackagedBy: nephros
     Categories:
      - Game
+     - Emulator
     Custom:
       Repo: %{url}
       PackagingRepo: https://github.com/nephros/sailfishos-gemrb
-    Icon: %{url}/raw/master/artwork/gemrb-logo.png
-    Url:
+    PackageIcon: https://gemrb.org/assets/img/site/favicon/apple-touch-icon.png
+    Screenshots:
+        https://gemrb.org/assets/img/site/main-header.jpg
+    Links:
       Homepage: https://gemrb.org/
       Help: https://gemrb.org/Documentation.html
       Bugtracker: %{url}/issues
