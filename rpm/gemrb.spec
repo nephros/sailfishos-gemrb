@@ -22,10 +22,9 @@ Source1:    GemRB.cfg
 Source2:    gemrb.desktop
 Source100:  gemrb.yaml
 Source101:  gemrb-rpmlintrc
-Patch0:     SDL2_touch_abs_coord.patch
-Patch1:     SDL2_wayland_rotate.patch
-Patch2:     SDL2_wayland_rotate_link_wayland.patch
-Patch3:     SDL2_debug_messages.patch
+Patch0:     SDL2_wayland_rotate.patch
+Patch1:     SDL2_wayland_rotate_link_wayland.patch
+Patch2:     SDL2_debug_messages.patch
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(python3)
@@ -83,14 +82,12 @@ Url:
 %prep
 %setup -q -n %{name}-%{version}/upstream
 
-# SDL2_touch_abs_coord.patch
-%patch0 -p1
 # SDL2_wayland_rotate.patch
-%patch1 -p1
+%patch0 -p1
 # SDL2_wayland_rotate_link_wayland.patch
-%patch2 -p1
+%patch1 -p1
 # SDL2_debug_messages.patch
-%patch3 -p1
+%patch2 -p1
 # >> setup
 # << setup
 
