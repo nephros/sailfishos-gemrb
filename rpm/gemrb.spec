@@ -23,8 +23,9 @@ Source100:  gemrb.yaml
 Source101:  gemrb-rpmlintrc
 Patch0:     SDL2_wayland_rotate.patch
 Patch1:     SDL2_wayland_rotate_link_wayland.patch
-Patch2:     SDL2_debug_messages.patch
-Patch3:     SFOS-no-ask-quit.patch
+Patch2:     SDL2_custom_size_on_wayland.patch
+Patch3:     SDL2_debug_messages.patch
+Patch4:     SFOS-no-ask-quit.patch
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(python3)

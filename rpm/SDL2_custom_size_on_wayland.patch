@@ -1,0 +1,13 @@
+diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+index 073db8367..5879293c6 100644
+--- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
++++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+@@ -166,7 +166,7 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title, bool vsync)
+ 	// In a window manager, there is probably little to gain anyway, and more powerful devices won't need anything like this.
+ 	SDL_SysWMinfo wmInfo;
+ 	auto infoResult = SDL_GetWindowWMInfo(window, &wmInfo);
+-	if (infoResult && wmInfo.subsystem == SDL_SYSWM_KMSDRM) {
++	if (infoResult && wmInfo.subsystem == SDL_SYSWM_KMSDRM) || (infoResult && wmInfo.subsystem == SDL_SYSWM_WAYLAND) {
+ 		SDL_DisplayMode currentMode;
+ 
+ 		// SDL won't know the display size until it has tried
