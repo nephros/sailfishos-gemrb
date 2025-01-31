@@ -59,7 +59,7 @@ RpmLintIgnore:
   - 'devel-file-in-non-devel-package'
 Macros:
   - '_orgname;org.gemrb'
-  - '_appname;org.gemrb'
+  - '_appname;gemrb'
   - '_gamedatadir;%{_datadir}/%{_orgname}.%{_appname}'
 #  - |
 #    spectacle_bug; hack_fix

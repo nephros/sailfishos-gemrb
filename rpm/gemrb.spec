@@ -8,7 +8,7 @@ Name:       gemrb
 # >> macros
 # << macros
 %define _orgname org.gemrb
-%define _appname org.gemrb
+%define _appname gemrb
 %define _gamedatadir %{_datadir}/%{_orgname}.%{_appname}
 
 Summary:    Open-source implementation of Bioware’s Infinity Engine.
