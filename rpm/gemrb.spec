@@ -19,7 +19,6 @@ License:    GPLv2
 URL:        https://github.com/gemrb/gemrb
 Source0:    %{name}-%{version}.tar.gz
 Source1:    GemRB.cfg
-Source2:    gemrb.desktop
 Source100:  gemrb.yaml
 Source101:  gemrb-rpmlintrc
 Patch0:     SDL2_wayland_rotate.patch
@@ -128,7 +127,23 @@ rm -rf %{buildroot}/%{_datadir}/pixmaps/%{name}.png
 
 install -d %{buildroot}/%{_gamedatadir}/config/
 install -D -m644 %SOURCE1 %{buildroot}/%{_gamedatadir}/config/GemRB.cfg
-install -D -m644 %SOURCE2 %{buildroot}%{_datadir}/applications
+
+install -d %{buildroot}%{_datadir}/applications
+install -D -m644 upstream/platforms/linux/gemrb.desktop %{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}.desktop
+
+desktop-file-edit \
+--set-key=Exec --set-value="/usr/bin/gemrb" \
+--set-key=Terminal --set-value=false \
+--set-key=X-Nemo-Applicaton-Type --set-value=no-invoker \
+--set-icon=gemrb \
+%{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}.desktop
+
+cat << EOF >> %{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}.desktop
+[X-Sailjail]
+Permissions=Documents;Downloads;Audio
+OrganizationName=%{_orgname}
+ApplicationName=%{_appname}
+EOF
 
 # fix python shebang so we don't depend on python2:
 sed -i '1s=^#!/usr/bin/\(python\|env python\)[23]\?=#!%{__python3}=' %{buildroot}%{_bindir}/extend2da.py
@@ -142,7 +157,7 @@ desktop-file-install --delete-original       \
 %defattr(-,root,root,-)
 %license COPYING
 %{_bindir}/*
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/%{_orgname}.%{_appname}.desktop
 %{_datadir}/icons/*/scalable/apps/%{name}.svg
 %{_datadir}/icons/*/*/apps/*.png
 %{_libexecdir}/%{name}/
