@@ -107,7 +107,7 @@ Url:
     -DSYSCONF_DIR=%{_gamedatadir}/config/ \
     -DICON_DIR=%{_datadir}/icons/hicolor/64x64/apps \
     -DUSE_LIBVLC=OFF \
-    CFLAGS="${CFLAGS} -DSDL_RESOLUTION_INDEPENDANCE
+    CFLAGS="${CFLAGS} -DSDL_RESOLUTION_INDEPENDANCE"
 
 
 # >> build post

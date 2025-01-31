@@ -114,7 +114,7 @@ ConfigOptions:
   # '-DMENU_DIR'
   - '-DUSE_LIBVLC=OFF'
   # required??
-  - 'CFLAGS="${CFLAGS} -DSDL_RESOLUTION_INDEPENDANCE'
+  - 'CFLAGS="${CFLAGS} -DSDL_RESOLUTION_INDEPENDANCE"'
 Builder: none
 NoIconCache: true
 Files:
