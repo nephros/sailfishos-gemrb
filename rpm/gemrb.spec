@@ -7,6 +7,9 @@ Name:       gemrb
 
 # >> macros
 # << macros
+%define _orgname org.gemrb
+%define _appname org.gemrb
+%define _gamedatadir %{_datadir}/%{_orgname}.%{_appname}
 
 Summary:    Open-source implementation of Bioware’s Infinity Engine.
 Version:    0.9.4
@@ -22,8 +25,6 @@ Source101:  gemrb-rpmlintrc
 Patch0:     SDL2_touch_abs_coord.patch
 Patch1:     SDL2_wayland_rotate.patch
 Patch2:     SDL2_wayland_rotate_link_wayland.patch
-Requires(post): /sbin/ldconfig
-Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(python3)
@@ -97,11 +98,13 @@ Url:
 %cmake .  \
     -B%{_builddir}/_build \
     -DSDL_BACKEND=SDL2 \
-    -DLIB_DIR=%{_libdir} \
-    -DPLUGIN_DIR=%{_datadir}/%{name}/plugins/ \
+    -DLIB_DIR=%{_libexecdir}/%{name} \
+    -DPLUGIN_DIR=%{_gamedatadir}/plugins/ \
+    -DDATA_DIR=%{_gamedatadir} \
+    -DSYSCONF_DIR=%{_gamedatadir}/config/ \
     -DICON_DIR=%{_datadir}/icons/hicolor/64x64/apps \
     -DUSE_LIBVLC=OFF \
-    -DSDL_RESOLUTION_INDEPENDANCE=ON
+    CFLAGS="${CFLAGS} -DSDL_RESOLUTION_INDEPENDANCE
 
 
 # >> build post
@@ -133,10 +136,6 @@ desktop-file-install --delete-original       \
   --dir %{buildroot}%{_datadir}/applications             \
    %{buildroot}%{_datadir}/applications/*.desktop
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
-
 %files
 %defattr(-,root,root,-)
 %license COPYING
@@ -144,12 +143,11 @@ desktop-file-install --delete-original       \
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/*/scalable/apps/%{name}.svg
 %{_datadir}/icons/*/*/apps/*.png
-%dir %{_sysconfdir}/%{name}
+%{_sysconfdir}/%{name}/
 %{_sysconfdir}/%{name}/*
-%{_libdir}/*.so
-%{_libdir}/*.so.*
-%{_datadir}/metainfo/*
-%dir %{_datadir}/%{name}
+%{_libexecdir}/%{name}/
 %{_datadir}/%{name}/*
+%exclude %{_datadir}/metainfo/*.xml
+%exclude %{_datadir}/metainfo
 # >> files
 # << files

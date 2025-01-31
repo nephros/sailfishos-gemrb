@@ -56,8 +56,10 @@ RpmLintIgnore:
   - 'explicit-lib-dependency'
   - 'arch-dependent-file-in-usr-share'
   - 'devel-file-in-non-devel-package'
-#Macros:
-#  - 'foo;bar'
+Macros:
+  - '_orgname;org.gemrb'
+  - '_appname;org.gemrb'
+  - '_gamedatadir;%{_datadir}/%{_orgname}.%{_appname}'
 #  - |
 #    spectacle_bug; hack_fix
 #    # Spectacular spectacle hack:
@@ -99,28 +101,30 @@ ConfigOptions:
   # compiles but does not work on aarch64
   # '-DOPENGL_BACKEND=GLES'
   # '-DOPENGL_BACKEND=OpenGL'
-  - '-DLIB_DIR=%{_libdir}'
-  - '-DPLUGIN_DIR=%{_datadir}/%{name}/plugins/'
+  # '-DPREFIX='
+  - '-DLIB_DIR=%{_libexecdir}/%{name}'
+  - '-DPLUGIN_DIR=%{_gamedatadir}/plugins/'
+  # '-DBIN_DIR'
+  - '-DDATA_DIR=%{_gamedatadir}'
+  - '-DSYSCONF_DIR=%{_gamedatadir}/config/'
+  # '-DDOC_DIR'
   - '-DICON_DIR=%{_datadir}/icons/hicolor/64x64/apps'
+  # '-DSVG_DIR'
+  # '-DMENU_DIR'
   - '-DUSE_LIBVLC=OFF'
-  - '-DSDL_RESOLUTION_INDEPENDANCE=ON'
+  # required??
+  - 'CFLAGS="${CFLAGS} -DSDL_RESOLUTION_INDEPENDANCE'
 Builder: none
 NoIconCache: true
-#BuildArch: noarch
-#AutoSubPackages:
-#  - doc
 Files:
   - '%license COPYING'
   - '%{_bindir}/*'
   - '%{_datadir}/applications/%{name}.desktop'
   - '%{_datadir}/icons/*/scalable/apps/%{name}.svg'
   - '%{_datadir}/icons/*/*/apps/*.png'
-  - '%dir %{_sysconfdir}/%{name}'
+  - '%{_sysconfdir}/%{name}/'
   - '%{_sysconfdir}/%{name}/*'
-  # '%dir %{_libdir}/%{name}'
-  # '%{_libdir}/%{name}/*'
-  - '%{_libdir}/*.so'
-  - '%{_libdir}/*.so.*'
-  - '%{_datadir}/metainfo/*'
-  - '%dir %{_datadir}/%{name}'
+  - '%{_libexecdir}/%{name}/'
   - '%{_datadir}/%{name}/*'
+  - '%exclude %{_datadir}/metainfo/*.xml'
+  - '%exclude %{_datadir}/metainfo'

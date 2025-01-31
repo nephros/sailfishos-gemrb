@@ -6,7 +6,7 @@ Comment=a portable opensource implementation of Bioware's Infinity Engine
 Type=Application
 Icon=gemrb
 Terminal=true
-Exec=gemrb
+Exec=/usr/bin/gemrb
 Categories=Game;RolePlaying;Emulator;
 Keywords=roleplay;rpg;adventure;game;2d;isometric;gemrb;infinity engine;black isle;
 X-AppImage-Name=GemRB
@@ -15,3 +15,5 @@ X-Nemo-Applicaton-Type=no-invoker
 
 [X-Sailjail]
 Permissions=Documents;Downloads;Audio
+OrganizationName=org.gemrb
+ApplicationName=gemrb
