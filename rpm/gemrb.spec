@@ -128,7 +128,9 @@ popd
 rm -rf %{buildroot}/%{_docdir}
 rm -rf %{buildroot}/%{_mandir}
 rm -rf %{buildroot}/%{_datadir}/pixmaps/%{name}.png
-install -D -m644 %SOURCE1 %{buildroot}/%{_sysconfdir}/%{name}/GemRB.cfg
+
+install -d %{buildroot}/%{_gamedatadir}/config/
+install -D -m644 %SOURCE1 %{buildroot}/%{_gamedatadir}/config/GemRB.cfg
 install -D -m644 %SOURCE2 %{buildroot}%{_datadir}/applications
 
 # fix python shebang so we don't depend on python2:
