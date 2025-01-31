@@ -168,6 +168,7 @@ desktop-file-install --delete-original       \
 %{_datadir}/icons/*/*/apps/*.png
 %{_libexecdir}/%{name}/
 %{_gamedatadir}/
+%exclude %{_datadir}/applications/gemrb.desktop
 %exclude %{_datadir}/metainfo/*.xml
 %exclude %{_datadir}/metainfo
 # >> files
