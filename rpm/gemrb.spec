@@ -146,10 +146,8 @@ desktop-file-install --delete-original       \
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/*/scalable/apps/%{name}.svg
 %{_datadir}/icons/*/*/apps/*.png
-%{_sysconfdir}/%{name}/
-%{_sysconfdir}/%{name}/*
 %{_libexecdir}/%{name}/
-%{_datadir}/%{name}/*
+%{_gamedatadir}/
 %exclude %{_datadir}/metainfo/*.xml
 %exclude %{_datadir}/metainfo
 # >> files
