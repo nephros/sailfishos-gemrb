@@ -132,7 +132,7 @@ sed -i "s#@@ORGNAME@@#%{_orgname}#g" %{buildroot}/%{_gamedatadir}/config/GemRB.c
 sed -i "s#@@APPNAME@@#%{_appname}#g" %{buildroot}/%{_gamedatadir}/config/GemRB.cfg
 
 install -d %{buildroot}%{_datadir}/applications
-install -D -m644 upstream/platforms/linux/gemrb.desktop %{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}.desktop
+install -D -m644 platforms/linux/gemrb.desktop %{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}.desktop
 
 desktop-file-edit \
 --set-key=Exec --set-value="/usr/bin/gemrb" \
