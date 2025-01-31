@@ -1,0 +1,13 @@
+diff --git a/gemrb/plugins/SDLVideo/SDLVideo.cpp b/gemrb/plugins/SDLVideo/SDLVideo.cpp
+index 678f54c71..a00d8c503 100644
+--- a/gemrb/plugins/SDLVideo/SDLVideo.cpp
++++ b/gemrb/plugins/SDLVideo/SDLVideo.cpp
+@@ -148,7 +148,7 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event& event)
+ 			/* Process the appropriate event type */
+ 		case SDL_QUIT:
+ 			/* Quit event originated from outside GemRB so ask the user if we should exit */
+-			core->AskAndExit();
++			//core->AskAndExit();
+ 			return GEM_OK;
+ 		case SDL_KEYUP:
+ 			key = TranslateKeycode(sym);
