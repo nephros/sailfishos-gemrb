@@ -127,6 +127,9 @@ rm -rf %{buildroot}/%{_datadir}/pixmaps/%{name}.png
 
 install -d %{buildroot}/%{_gamedatadir}/config/
 install -D -m644 %SOURCE1 %{buildroot}/%{_gamedatadir}/config/GemRB.cfg
+sed -i "s#@@INSTALLDIR@@#%{_gamedatadir}#g" %{buildroot}/%{_gamedatadir}/config/GemRB.cfg
+sed -i "s#@@ORGNAME@@#%{_orgname}#g" %{buildroot}/%{_gamedatadir}/config/GemRB.cfg
+sed -i "s#@@APPNAME@@#%{_appname}#g" %{buildroot}/%{_gamedatadir}/config/GemRB.cfg
 
 install -d %{buildroot}%{_datadir}/applications
 install -D -m644 upstream/platforms/linux/gemrb.desktop %{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}.desktop
