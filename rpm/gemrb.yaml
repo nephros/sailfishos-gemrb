@@ -16,6 +16,7 @@ Patches:
   - SDL2_touch_abs_coord.patch
   - SDL2_wayland_rotate.patch
   - SDL2_wayland_rotate_link_wayland.patch
+  - SDL2_debug_messages.patch
 Description: |
     GemRB (Game Engine Made with preRendered Background) is a portable
     open-source reimplementation of the Infinity Engine that underpinned Baldur's
