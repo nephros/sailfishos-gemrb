@@ -17,6 +17,7 @@ Patches:
   - SDL2_wayland_rotate_link_wayland.patch
   - SDL2_custom_size_on_wayland.patch
   - SDL2_debug_messages.patch
+  - SDL2_log_resize.patch
   - SFOS-no-ask-quit.patch
 Description: |
     GemRB (Game Engine Made with preRendered Background) is a portable

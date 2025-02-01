@@ -1,0 +1,18 @@
+diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+index 073db8367..31e17d131 100644
+--- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
++++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+@@ -933,6 +933,13 @@ int SDL20VideoDriver::ProcessEvent(const SDL_Event& event)
+ 					core->GetAudioDrv()->Resume(); //this is for ANDROID mostly
+ 					break;
+ 				// SDL_WINDOWEVENT_RESIZED and SDL_WINDOWEVENT_SIZE_CHANGED are handled automatically
++				case SDL_WINDOWEVENT_RESIZED: // fall through
++				case SDL_WINDOWEVENT_SIZE_CHANGED:
++					SDL_DisplayMode dmode = {};
++					SDL_GetCurrentDisplayMode(0, &dmode);
++					Log(DEBUG, "SDL20Video", "Resized: scr w{}h{}, mode w{}h{}", screenSize.w, screenSize.h), dmode.w, dmode.h;
++					SDL_free(dm);
++					break;
+ 				default:
+ 					break;
+ 			}

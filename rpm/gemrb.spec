@@ -25,7 +25,8 @@ Patch0:     SDL2_wayland_rotate.patch
 Patch1:     SDL2_wayland_rotate_link_wayland.patch
 Patch2:     SDL2_custom_size_on_wayland.patch
 Patch3:     SDL2_debug_messages.patch
-Patch4:     SFOS-no-ask-quit.patch
+Patch4:     SDL2_log_resize.patch
+Patch5:     SFOS-no-ask-quit.patch
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(python3)
@@ -90,10 +91,14 @@ Links:
 %patch0 -p1
 # SDL2_wayland_rotate_link_wayland.patch
 %patch1 -p1
-# SDL2_debug_messages.patch
+# SDL2_custom_size_on_wayland.patch
 %patch2 -p1
-# SFOS-no-ask-quit.patch
+# SDL2_debug_messages.patch
 %patch3 -p1
+# SDL2_log_resize.patch
+%patch4 -p1
+# SFOS-no-ask-quit.patch
+%patch5 -p1
 # >> setup
 # << setup
 
