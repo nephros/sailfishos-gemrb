@@ -1,0 +1,18 @@
+diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+index ebfe7b52b..73c1611dd 100644
+--- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
++++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+@@ -166,6 +166,13 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title, bool vsync)
+ 	// In a window manager, there is probably little to gain anyway, and more powerful devices won't need anything like this.
+ 	SDL_SysWMinfo wmInfo;
+ 	auto infoResult = SDL_GetWindowWMInfo(window, &wmInfo);
++	if (infoResult && wmInfo.subsystem == SDL_SYSWM_WAYLAND) {
++		SDL_DisplayMode dMode;
++		if (SDL_GetDesktopDisplayMode(0, &dMode) == 0) {
++			customFullscreenSize = { dMode.w, dMode.h };
++			Log(MESSAGE, "SDL2", "Will use custom size of {}x{}", customFullscreenSize.w, customFullscreenSize.h);
++		}
++	}
+ 	if (infoResult && wmInfo.subsystem == SDL_SYSWM_KMSDRM) {
+ 		SDL_DisplayMode currentMode;
+ 
