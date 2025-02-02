@@ -186,7 +186,8 @@ desktop-file-install --delete-original       \
 %{_datadir}/icons/*/*/apps/*.png
 %{_libexecdir}/%{name}/
 %{_gamedatadir}/
-%exclude %{_gamedatadir}/demo/
+%exclude %{_gamedatadir}/demo
+%exclude %{_gamedatadir}/GUIScripts/demo
 %exclude %{_datadir}/applications/gemrb.desktop
 %exclude %{_datadir}/metainfo/*.xml
 %exclude %{_datadir}/metainfo
@@ -196,5 +197,6 @@ desktop-file-install --delete-original       \
 %files demo
 %defattr(-,root,root,-)
 %{_gamedatadir}/demo/
+%{_gamedatadir}/GUIScripts/demo/
 # >> files demo
 # << files demo
