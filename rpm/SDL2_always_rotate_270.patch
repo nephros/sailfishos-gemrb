@@ -1,0 +1,13 @@
+diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+index 073db8367..a96819b52 100644
+--- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
++++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+@@ -592,7 +592,7 @@ int SDL20VideoDriver::RenderCopyShaded(SDL_Texture* texture, const SDL_Rect* src
+ 	SDL_RendererFlip flipflags = (flags & BlitFlags::MIRRORY) ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE;
+ 	flipflags = static_cast<SDL_RendererFlip>(flipflags | ((flags & BlitFlags::MIRRORX) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE));
+ 
+-	return SDL_RenderCopyEx(renderer, texture, srcrect, dstrect, 0.0, nullptr, flipflags);
++	return SDL_RenderCopyEx(renderer, texture, srcrect, dstrect, 270.0, nullptr, flipflags);
+ }
+ 
+ void SDL20VideoDriver::SetTextureBlendMode(SDL_Texture* texture, BlitFlags flags) const
