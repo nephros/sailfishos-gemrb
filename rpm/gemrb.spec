@@ -84,6 +84,15 @@ Links:
 %endif
 
 
+%package demo
+Summary:    Demo data files for %{name}
+Group:      Applications
+BuildArch:  noarch
+Requires:   %{name} = %{version}-%{release}
+
+%description demo
+%{summary}.
+
 %prep
 %setup -q -n %{name}-%{version}/upstream
 
@@ -177,8 +186,15 @@ desktop-file-install --delete-original       \
 %{_datadir}/icons/*/*/apps/*.png
 %{_libexecdir}/%{name}/
 %{_gamedatadir}/
+%exclude %{_gamedatadir}/demo/
 %exclude %{_datadir}/applications/gemrb.desktop
 %exclude %{_datadir}/metainfo/*.xml
 %exclude %{_datadir}/metainfo
 # >> files
 # << files
+
+%files demo
+%defattr(-,root,root,-)
+%{_gamedatadir}/demo/
+# >> files demo
+# << files demo
