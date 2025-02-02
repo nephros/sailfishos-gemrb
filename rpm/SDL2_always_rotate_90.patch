@@ -1,5 +1,5 @@
 diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
-index 073db8367..c06af3c43 100644
+index 073db8367..68939e999 100644
 --- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
 +++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
 @@ -234,7 +234,7 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title, bool vsync)
@@ -7,7 +7,7 @@ index 073db8367..c06af3c43 100644
  	// Try to grab the texture shader program of SDL
  	static const SDL_Rect r = { 0, 0, 1, 1 };
 -	SDL_RenderCopy(renderer, ScratchBuffer(), &r, &r);
-+	SDL_RenderCopyEx(renderer, ScratchBuffer(), &r, &r, 90.0 nullptr, SDL_FLIP_NONE);
++	SDL_RenderCopyEx(renderer, ScratchBuffer(), &r, &r, 90.0, nullptr, SDL_FLIP_NONE);
  	#if SDL_VERSION_ATLEAST(2, 0, 10)
  	SDL_RenderFlush(renderer);
  	#endif
@@ -25,7 +25,7 @@ index 073db8367..c06af3c43 100644
  		SDL_SetRenderTarget(renderer, CurrentRenderBuffer());
  		SetTextureBlendMode(ScratchBuffer(), flags);
 -		ret = SDL_RenderCopy(renderer, ScratchBuffer(), &drect, &drect);
-+		ret = SDL_RenderCopyEx(renderer, ScratchBuffer(), &drect, &drect, 90.0 nullptr, SDL_FLIP_NONE);
++		ret = SDL_RenderCopyEx(renderer, ScratchBuffer(), &drect, &drect, 90.0, nullptr, SDL_FLIP_NONE);
  	} else {
  		UpdateRenderTarget();
  		ret = RenderCopyShaded(texSprite, &srect, &drect, flags, tint);
