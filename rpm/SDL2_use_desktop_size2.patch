@@ -1,8 +1,8 @@
 diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
-index 073db8367..9998074bd 100644
+index 073db8367..886efdc83 100644
 --- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
 +++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
-@@ -151,7 +151,14 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title, bool vsync)
+@@ -151,7 +151,22 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title, bool vsync)
  	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
  #endif
  
@@ -11,7 +11,15 @@ index 073db8367..9998074bd 100644
 +	SDL_DisplayMode desktopMode;
 +	if (SDL_GetDesktopDisplayMode(0, &desktopMode) == 0) {
 +		winFlags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
-+		window = SDL_CreateWindow(title, 0, 0, desktopMode.w, desktopMode.h, winFlags);
++		Size desktopSize;
++		if (desktopMode.w < desktopMode.h) {
++			desktopSize.w = desktopMode.w;
++			desktopSize.h = desktopMode.h;
++		} else {
++			desktopSize.w = desktopMode.h;
++			desktopSize.h = desktopMode.w;
++		}
++		window = SDL_CreateWindow(title, 0, 0, desktopSize.w, desktopSize.h, winFlags);
 +	} else {
 +		window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenSize.w, screenSize.h, winFlags);
 +	}
