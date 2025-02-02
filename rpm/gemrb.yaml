@@ -13,8 +13,8 @@ Patches:
   # SDL2_cmake_fix.patch
   # SDL2_force_landscape.patch
   # SDL2_touch_abs_coord.patch // works without this
-  - SDL2_wayland_rotate.patch
-  - SDL2_wayland_rotate_link_wayland.patch
+  # SDL2_wayland_rotate.patch
+  # SDL2_wayland_rotate_link_wayland.patch
   # SDL2_custom_size_on_wayland.patch
   - SDL2_use_desktop_size.patch
   # SDL2_debug_messages.patch
