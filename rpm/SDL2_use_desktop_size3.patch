@@ -1,0 +1,27 @@
+diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+index 073db8367..9b137bbcc 100644
+--- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
++++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+@@ -151,7 +151,21 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title, bool vsync)
+ 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+ #endif
+ 
+-	window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenSize.w, screenSize.h, winFlags);
++	// Sailfish OS: always make a full screen window
++	SDL_DisplayMode desktopMode;
++	if (SDL_GetDesktopDisplayMode(0, &desktopMode) == 0) {
++		// https://wiki.libsdl.org/SDL3/SDL_PROP_WINDOW_CREATE_WAYLAND_CREATE_EGL_WINDOW_BOOLEAN
++		auto props = SDL_CreateProperties();
++		//SDL_SetPointerProperty(props, SDL_PROP_WINDOW_CREATE_WAYLAND_WL_SURFACE_POINTER, surface);
++		//SDL_SetBooleanProperty(props, SDL_PROP_WINDOW_CREATE_OPENGL_BOOLEAN, true);
++		SDL_SetBooleanProperty(props, SDL_PROP_WINDOW_CREATE_EGL_WINDOW_BOOLEAN, true);
++		SDL_SetNumberProperty(props, SDL_PROP_WINDOW_CREATE_WIDTH_NUMBER, desktopMode.w);
++		SDL_SetNumberProperty(props, SDL_PROP_WINDOW_CREATE_HEIGHT_NUMBER, desktopMode.w);
++		window = SDL_CreateWindowWithProperties(props);
++		Log(DEBUG, "SDL 2 Driver", "created special wayland EGL window");
++	} else {
++		window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenSize.w, screenSize.h, winFlags);
++	}
+ 	if (window == NULL) {
+ 		Log(ERROR, "SDL 2 Driver", "couldn't create window: {}", SDL_GetError());
+ 		return GEM_ERROR;
