@@ -23,7 +23,7 @@ Patches:
   # SDL2_use_desktop_size.patch
   - SDL2_use_desktop_size2.patch
   # SDL2_debug_messages.patch
-  # SDL2_log_resize.patch
+  - SDL2_log_resize.patch
   - SFOS-no-ask-quit.patch
 Requires:
   # '%{name}-demo'
