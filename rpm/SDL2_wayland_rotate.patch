@@ -1,10 +1,10 @@
 diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
-index 312f2350c..7dd44a810 100644
+index 073db8367..7c24ae64b 100644
 --- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
 +++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
-@@ -172,6 +172,13 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title, bool vsync)
- 		return GEM_ERROR;
+@@ -179,6 +179,13 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title, bool vsync)
  	}
+ #endif
  
 +	SDL_SysWMinfo swminfo;
 +	SDL_VERSION(&swminfo.version)
@@ -17,16 +17,16 @@ index 312f2350c..7dd44a810 100644
  	SetWindowIcon(window);
  #endif
 diff --git a/gemrb/plugins/SDLVideo/SDL20Video.h b/gemrb/plugins/SDLVideo/SDL20Video.h
-index 2f952231f..0dcea80bb 100644
+index 0b7c3ef43..65404785d 100644
 --- a/gemrb/plugins/SDLVideo/SDL20Video.h
 +++ b/gemrb/plugins/SDLVideo/SDL20Video.h
 @@ -24,6 +24,9 @@
- #include "SDLVideo.h"
  #include "SDLSurfaceSprite2D.h"
+ #include "SDLVideo.h"
  
 +#include <SDL2/SDL_syswm.h>
 +#include <wayland-client-protocol.h>
 +
  #if USE_OPENGL_BACKEND
- #include "GLSLProgram.h"
+ 	#include "GLSLProgram.h"
  #else

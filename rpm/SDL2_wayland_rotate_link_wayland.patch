@@ -1,8 +1,8 @@
 diff --git a/cmake/Helpers.cmake b/cmake/Helpers.cmake
-index 6084862b6..80355a4bc 100644
+index dff9712b2..dcf182d35 100644
 --- a/cmake/Helpers.cmake
 +++ b/cmake/Helpers.cmake
-@@ -184,6 +184,10 @@ FUNCTION(CONFIGURE_SDL SDL_BACKEND)
+@@ -189,6 +189,10 @@ FUNCTION(CONFIGURE_SDL SDL_BACKEND)
  			SET(SDL2_LIBRARIES debug ${SDL2_LIBRARY_DEBUG} optimized ${SDL2_LIBRARY_RELEASE})
  		ELSE()
  			FIND_PACKAGE(SDL2 REQUIRED)
@@ -13,7 +13,7 @@ index 6084862b6..80355a4bc 100644
  		ENDIF()
  	ENDIF()
  
-@@ -196,6 +200,10 @@ FUNCTION(CONFIGURE_SDL SDL_BACKEND)
+@@ -201,6 +205,10 @@ FUNCTION(CONFIGURE_SDL SDL_BACKEND)
  		UNSET(SDL_INCLUDE_DIR CACHE)
  		UNSET(SDL_LIBRARY CACHE)
  
@@ -25,7 +25,7 @@ index 6084862b6..80355a4bc 100644
  			MESSAGE(STATUS "Found SDL 2.0, switching to SDL2 backend.")
  			SET_INTERNAL(SDL_FOUND ${SDL2_FOUND})
 diff --git a/gemrb/plugins/SDLVideo/CMakeLists.txt b/gemrb/plugins/SDLVideo/CMakeLists.txt
-index 7136ad058..b70c94d28 100644
+index 3d9d23f23..a7dd2dad7 100644
 --- a/gemrb/plugins/SDLVideo/CMakeLists.txt
 +++ b/gemrb/plugins/SDLVideo/CMakeLists.txt
 @@ -13,7 +13,7 @@ IF(SDL_BACKEND STREQUAL "SDL2")
