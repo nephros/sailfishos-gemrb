@@ -1,7 +1,34 @@
 diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
-index 073db8367..8033b1430 100644
+index 073db8367..c06af3c43 100644
 --- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
 +++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+@@ -234,7 +234,7 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title, bool vsync)
+ 
+ 	// Try to grab the texture shader program of SDL
+ 	static const SDL_Rect r = { 0, 0, 1, 1 };
+-	SDL_RenderCopy(renderer, ScratchBuffer(), &r, &r);
++	SDL_RenderCopyEx(renderer, ScratchBuffer(), &r, &r, 90.0 nullptr, SDL_FLIP_NONE);
+ 	#if SDL_VERSION_ATLEAST(2, 0, 10)
+ 	SDL_RenderFlush(renderer);
+ 	#endif
+@@ -427,7 +427,7 @@ void SDL20VideoDriver::BlitSpriteNativeClipped(SDL_Texture* texSprite, const Reg
+ 		SDL_Rect stencilRect = drect;
+ 		stencilRect.x -= stencilBuffer->Origin().x;
+ 		stencilRect.y -= stencilBuffer->Origin().y;
+-		SDL_RenderCopy(renderer, stencilTex, &stencilRect, &drect);
++		SDL_RenderCopyEx(renderer, stencilTex, &stencilRect, &drect, 90.0, nullptr, SDL_FLIP_NONE);
+ 
+ 		if (flags & (BlitFlags::ALPHA_MOD | BlitFlags::HALFTRANS)) {
+ 			Uint8 alpha = SDL_ALPHA_OPAQUE;
+@@ -442,7 +442,7 @@ void SDL20VideoDriver::BlitSpriteNativeClipped(SDL_Texture* texSprite, const Reg
+ 		}
+ 		SDL_SetRenderTarget(renderer, CurrentRenderBuffer());
+ 		SetTextureBlendMode(ScratchBuffer(), flags);
+-		ret = SDL_RenderCopy(renderer, ScratchBuffer(), &drect, &drect);
++		ret = SDL_RenderCopyEx(renderer, ScratchBuffer(), &drect, &drect, 90.0 nullptr, SDL_FLIP_NONE);
+ 	} else {
+ 		UpdateRenderTarget();
+ 		ret = RenderCopyShaded(texSprite, &srect, &drect, flags, tint);
 @@ -592,7 +592,7 @@ int SDL20VideoDriver::RenderCopyShaded(SDL_Texture* texture, const SDL_Rect* src
  	SDL_RendererFlip flipflags = (flags & BlitFlags::MIRRORY) ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE;
  	flipflags = static_cast<SDL_RendererFlip>(flipflags | ((flags & BlitFlags::MIRRORX) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE));
