@@ -1,0 +1,20 @@
+diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+index 073db8367..9998074bd 100644
+--- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
++++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+@@ -151,7 +151,14 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title, bool vsync)
+ 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+ #endif
+ 
+-	window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenSize.w, screenSize.h, winFlags);
++	// Sailfish OS: always make a full screen window
++	SDL_DisplayMode desktopMode;
++	if (SDL_GetDesktopDisplayMode(0, &desktopMode) == 0) {
++		winFlags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
++		window = SDL_CreateWindow(title, 0, 0, desktopMode.w, desktopMode.h, winFlags);
++	} else {
++		window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenSize.w, screenSize.h, winFlags);
++	}
+ 	if (window == NULL) {
+ 		Log(ERROR, "SDL 2 Driver", "couldn't create window: {}", SDL_GetError());
+ 		return GEM_ERROR;

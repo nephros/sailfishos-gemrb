@@ -23,7 +23,7 @@ Source100:  gemrb.yaml
 Source101:  gemrb-rpmlintrc
 Patch0:     SDL2_wayland_rotate.patch
 Patch1:     SDL2_wayland_rotate_link_wayland.patch
-Patch2:     SDL2_reverse_logical_dimensions.patch
+Patch2:     SDL2_use_desktop_size2.patch
 Patch3:     SFOS-no-ask-quit.patch
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(SDL2_mixer)
@@ -98,7 +98,7 @@ Requires:   %{name} = %{version}-%{release}
 %patch0 -p1
 # SDL2_wayland_rotate_link_wayland.patch
 %patch1 -p1
-# SDL2_reverse_logical_dimensions.patch
+# SDL2_use_desktop_size2.patch
 %patch2 -p1
 # SFOS-no-ask-quit.patch
 %patch3 -p1
