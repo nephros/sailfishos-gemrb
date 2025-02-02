@@ -20,7 +20,7 @@ Patches:
   # SDL2_switch_height_width.patch
   # SDL2_custom_size_on_wayland.patch
   - SDL2_reverse_logical_dimensions.patch
-  - SDL2_use_desktop_size.patch
+  # SDL2_use_desktop_size.patch
   # SDL2_debug_messages.patch
   # SDL2_log_resize.patch
   - SFOS-no-ask-quit.patch
