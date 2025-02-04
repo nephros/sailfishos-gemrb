@@ -1,5 +1,5 @@
 diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
-index 073db8367..f0b070eb8 100644
+index 073db8367..221fa1b35 100644
 --- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
 +++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
 @@ -151,11 +151,17 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title, bool vsync)
