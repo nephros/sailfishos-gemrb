@@ -10,6 +10,8 @@ Sources:
     - '%{name}-%{version}.tar.gz'
     - GemRB.cfg
 Patches:
+  # ensure we don't get hanging applications waiting for ctrl-c
+  - SFOS-no-ask-quit.patch
   # SDL2_force_landscape.patch
   # SDL2_touch_abs_coord.patch // works without this
   - SDL2_wayland_rotate.patch
@@ -22,8 +24,8 @@ Patches:
   # SDL2_use_desktop_size2.patch
   - SDL2_fullscreen_via_zero.patch
   # SDL2_debug_messages.patch
-  - SDL2_log_resize.patch
-  - SFOS-no-ask-quit.patch
+  # SDL2_log_resize.patch
+  - SDL2_log_and_rotate_on_resize.patch
 Requires:
   # '%{name}-demo'
 Description: |

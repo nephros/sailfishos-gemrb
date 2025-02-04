@@ -21,11 +21,11 @@ Source0:    %{name}-%{version}.tar.gz
 Source1:    GemRB.cfg
 Source100:  gemrb.yaml
 Source101:  gemrb-rpmlintrc
-Patch0:     SDL2_wayland_rotate.patch
-Patch1:     SDL2_wayland_rotate_link_wayland.patch
-Patch2:     SDL2_fullscreen_via_zero.patch
-Patch3:     SDL2_log_resize.patch
-Patch4:     SFOS-no-ask-quit.patch
+Patch0:     SFOS-no-ask-quit.patch
+Patch1:     SDL2_wayland_rotate.patch
+Patch2:     SDL2_wayland_rotate_link_wayland.patch
+Patch3:     SDL2_fullscreen_via_zero.patch
+Patch4:     SDL2_log_and_rotate_on_resize.patch
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(python3)
@@ -95,15 +95,15 @@ Requires:   %{name} = %{version}-%{release}
 %prep
 %setup -q -n %{name}-%{version}/upstream
 
-# SDL2_wayland_rotate.patch
-%patch0 -p1
-# SDL2_wayland_rotate_link_wayland.patch
-%patch1 -p1
-# SDL2_fullscreen_via_zero.patch
-%patch2 -p1
-# SDL2_log_resize.patch
-%patch3 -p1
 # SFOS-no-ask-quit.patch
+%patch0 -p1
+# SDL2_wayland_rotate.patch
+%patch1 -p1
+# SDL2_wayland_rotate_link_wayland.patch
+%patch2 -p1
+# SDL2_fullscreen_via_zero.patch
+%patch3 -p1
+# SDL2_log_and_rotate_on_resize.patch
 %patch4 -p1
 # >> setup
 # << setup

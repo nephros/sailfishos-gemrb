@@ -1,0 +1,30 @@
+diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+index fc5eafaff..fc053f44a 100644
+--- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
++++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
+@@ -943,6 +943,25 @@ int SDL20VideoDriver::ProcessEvent(const SDL_Event& event)
+ 					core->GetAudioDrv()->Resume(); //this is for ANDROID mostly
+ 					break;
+ 				// SDL_WINDOWEVENT_RESIZED and SDL_WINDOWEVENT_SIZE_CHANGED are handled automatically
++				case SDL_WINDOWEVENT_RESIZED: // fall through
++				case SDL_WINDOWEVENT_SIZE_CHANGED:
++					{
++						SDL_DisplayMode dmode = {};
++						SDL_GetCurrentDisplayMode(0, &dmode);
++						Log(DEBUG, "SDL20Video", "Resized: scr w{}h{}, mode w{}h{}", screenSize.w, screenSize.h, dmode.w, dmode.h);
++
++						SDL_SysWMinfo swminfo;
++						SDL_GetWindowWMInfo(window, &swminfo);
++						wl_surface *sdl_wl_surface = swminfo.info.wl.surface;
++						if (dmode.h >= dmode.w ) { // portrait
++							Log(MESSAGE, "SDL 2 Driver", "Rotating Wayland display: portrait, 270");
++							wl_surface_set_buffer_transform(sdl_wl_surface, WL_OUTPUT_TRANSFORM_270);
++						} else {
++							Log(MESSAGE, "SDL 2 Driver", "Rotating Wayland display: landscape, normal");
++							wl_surface_set_buffer_transform(sdl_wl_surface, WL_OUTPUT_TRANSFORM_NORMAL);
++						}
++					}
++					break;
+ 				default:
+ 					break;
+ 			}
