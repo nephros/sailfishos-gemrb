@@ -1,0 +1,14 @@
+diff --git a/gemrb/plugins/SDLAudio/SDLAudio.cpp b/gemrb/plugins/SDLAudio/SDLAudio.cpp
+index be9d5544a..02004aa30 100644
+--- a/gemrb/plugins/SDLAudio/SDLAudio.cpp
++++ b/gemrb/plugins/SDLAudio/SDLAudio.cpp
+@@ -89,6 +89,9 @@ SDLAudio::~SDLAudio(void)
+ 
+ bool SDLAudio::Init(void)
+ {
++	// SailfishOS: enable proper OS audio management:
++	setenv("PULSE_PROP_application.name", "GemRB", 1);
++	setenv("PULSE_PROP_media.role", "x-maemo", 1);
+ 	if (SDL_InitSubSystem(SDL_INIT_AUDIO) < 0) {
+ 		Log(ERROR, "SDLAudio", "InitSubSystem failed: {}", SDL_GetError());
+ 		return false;

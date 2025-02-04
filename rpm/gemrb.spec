@@ -23,10 +23,11 @@ Source2:    GemRB-demo.cfg
 Source100:  gemrb.yaml
 Source101:  gemrb-rpmlintrc
 Patch0:     SFOS-no-ask-quit.patch
-Patch1:     SDL2_wayland_rotate.patch
-Patch2:     SDL2_wayland_rotate_link_wayland.patch
-Patch3:     SDL2_fullscreen_via_zero.patch
-Patch4:     SDL2_log_and_rotate_on_resize.patch
+Patch1:     SFOS-pulseaudio-props.patch
+Patch2:     SDL2_wayland_rotate.patch
+Patch3:     SDL2_wayland_rotate_link_wayland.patch
+Patch4:     SDL2_fullscreen_via_zero.patch
+Patch5:     SDL2_log_and_rotate_on_resize.patch
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(python3)
@@ -122,14 +123,16 @@ Links:
 
 # SFOS-no-ask-quit.patch
 %patch0 -p1
-# SDL2_wayland_rotate.patch
+# SFOS-pulseaudio-props.patch
 %patch1 -p1
-# SDL2_wayland_rotate_link_wayland.patch
+# SDL2_wayland_rotate.patch
 %patch2 -p1
-# SDL2_fullscreen_via_zero.patch
+# SDL2_wayland_rotate_link_wayland.patch
 %patch3 -p1
-# SDL2_log_and_rotate_on_resize.patch
+# SDL2_fullscreen_via_zero.patch
 %patch4 -p1
+# SDL2_log_and_rotate_on_resize.patch
+%patch5 -p1
 # >> setup
 # << setup
 
