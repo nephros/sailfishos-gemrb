@@ -91,7 +91,31 @@ BuildArch:  noarch
 Requires:   %{name} = %{version}-%{release}
 
 %description demo
-%{summary}.
+GemRB (Game Engine Made with preRendered Background) is a portable
+open-source reimplementation of the Infinity Engine that underpinned Baldur's
+Gate, Icewind Dale and Planescape: Torment.
+
+This packag includes the trivial game demo of GemRB.
+
+%if "%{?vendor}" == "chum"
+Title: GemRB Game Demo
+Type: desktop-application
+PackagedBy: nephros
+Categories:
+ - Game
+ - Emulator
+Custom:
+  Repo: %{url}
+  PackagingRepo: https://github.com/nephros/sailfishos-gemrb
+PackageIcon: https://gemrb.org/assets/img/site/favicon/apple-touch-icon.png
+Screenshots:
+    https://gemrb.org/assets/img/site/main-header.jpg
+Links:
+  Homepage: https://gemrb.org/
+  Help: https://gemrb.org/Documentation.html
+  Bugtracker: %{url}/issues
+%endif
+
 
 %prep
 %setup -q -n %{name}-%{version}/upstream
@@ -150,17 +174,24 @@ sed -i "s#@@INSTALLDIR@@#%{_gamedatadir}#g" %{buildroot}/%{_gamedatadir}/config/
 sed -i "s#@@ORGNAME@@#%{_orgname}#g" %{buildroot}/%{_gamedatadir}/config/GemRB.cfg
 sed -i "s#@@APPNAME@@#%{_appname}#g" %{buildroot}/%{_gamedatadir}/config/GemRB.cfg
 
+install -D -m644 %SOURCE2 %{buildroot}/%{_gamedatadir}/config/GemRB-demo.cfg
+sed -i "s#@@INSTALLDIR@@#%{_gamedatadir}#g" %{buildroot}/%{_gamedatadir}/config/GemRB-demo.cfg
+sed -i "s#@@ORGNAME@@#%{_orgname}#g" %{buildroot}/%{_gamedatadir}/config/GemRB-demo.cfg
+sed -i "s#@@APPNAME@@#%{_appname}#g" %{buildroot}/%{_gamedatadir}/config/GemRB-demo.cfg
+
+# Prepare a .desktop file for the demo
 install -d %{buildroot}%{_datadir}/applications
-install -D -m644 platforms/linux/gemrb.desktop %{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}.desktop
+install -D -m644 platforms/linux/gemrb.desktop %{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}-demo.desktop
 
 desktop-file-edit \
---set-key=Exec --set-value="/usr/bin/gemrb" \
+--set-name="GemRB Demo" \
+--set-key=Exec --set-value="/usr/bin/gemrb -c %{_gamedatadir}/config/GemRB-demo.cfg" \
 --set-key=Terminal --set-value=false \
 --set-key=X-Nemo-Applicaton-Type --set-value=no-invoker \
 --set-icon=gemrb \
-%{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}.desktop
+%{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}-demo.desktop
 
-cat << EOF >> %{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}.desktop
+cat << EOF >> %{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}-demo.desktop
 [X-Sailjail]
 Permissions=Documents;Downloads;Audio
 OrganizationName=%{_orgname}
@@ -179,7 +210,6 @@ desktop-file-install --delete-original       \
 %defattr(-,root,root,-)
 %license COPYING
 %{_bindir}/*
-%{_datadir}/applications/%{_orgname}.%{_appname}.desktop
 %{_datadir}/icons/*/scalable/apps/%{name}.svg
 %{_datadir}/icons/*/*/apps/*.png
 %{_libexecdir}/%{name}/
@@ -194,6 +224,7 @@ desktop-file-install --delete-original       \
 
 %files demo
 %defattr(-,root,root,-)
+%{_datadir}/applications/%{_orgname}.%{_appname}-demo.desktop
 %{_gamedatadir}/demo/
 %{_gamedatadir}/GUIScripts/demo/
 # >> files demo

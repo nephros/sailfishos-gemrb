@@ -136,7 +136,6 @@ NoIconCache: true
 Files:
   - '%license COPYING'
   - '%{_bindir}/*'
-  - '%{_datadir}/applications/%{_orgname}.%{_appname}.desktop'
   - '%{_datadir}/icons/*/scalable/apps/%{name}.svg'
   - '%{_datadir}/icons/*/*/apps/*.png'
   - '%{_libexecdir}/%{name}/'
@@ -152,6 +151,33 @@ SubPackages:
       Summary: Demo data files for %{name}
       Group: Applications
       BuildArch: noarch
+      Description: |
+          GemRB (Game Engine Made with preRendered Background) is a portable
+          open-source reimplementation of the Infinity Engine that underpinned Baldur's
+          Gate, Icewind Dale and Planescape: Torment.
+
+          This packag includes the trivial game demo of GemRB.
+
+          %if "%{?vendor}" == "chum"
+          Title: GemRB Game Demo
+          Type: desktop-application
+          PackagedBy: nephros
+          Categories:
+           - Game
+           - Emulator
+          Custom:
+            Repo: %{url}
+            PackagingRepo: https://github.com/nephros/sailfishos-gemrb
+          PackageIcon: https://gemrb.org/assets/img/site/favicon/apple-touch-icon.png
+          Screenshots:
+              https://gemrb.org/assets/img/site/main-header.jpg
+          Links:
+            Homepage: https://gemrb.org/
+            Help: https://gemrb.org/Documentation.html
+            Bugtracker: %{url}/issues
+          %endif
+
       Files:
+        - '%{_datadir}/applications/%{_orgname}.%{_appname}-demo.desktop'
         - '%{_gamedatadir}/demo/'
         - '%{_gamedatadir}/GUIScripts/demo/'
