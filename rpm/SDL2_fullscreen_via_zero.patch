@@ -17,7 +17,7 @@ index 073db8367..f0b070eb8 100644
 +		int w = -1;
 +		int h = -1;
 +		SDL_GetWindowSize(window, &w, &h);
-+		Log(DEBUG, "SDL 2 Driver", "Got a window of: h{} w{}", w, h);
++		Log(DEBUG, "SDL 2 Driver", "Got a window of: w{} h{}", w, h);
 +	};
  
  #if SDL_VERSION_ATLEAST(2, 0, 16)
