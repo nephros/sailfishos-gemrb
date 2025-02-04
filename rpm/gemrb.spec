@@ -143,6 +143,7 @@ Links:
 %cmake .  \
     -B%{_builddir}/_build \
     -DSDL_BACKEND=SDL2 \
+    -DOPENGL_BACKEND=GLES \
     -DLIB_DIR=%{_libexecdir}/%{name} \
     -DPLUGIN_DIR=%{_gamedatadir}/plugins/ \
     -DDATA_DIR=%{_gamedatadir} \

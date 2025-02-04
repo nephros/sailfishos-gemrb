@@ -78,15 +78,6 @@ Macros:
   - '_orgname;org.gemrb'
   - '_appname;gemrb'
   - '_gamedatadir;%{_datadir}/%{_orgname}.%{_appname}'
-#  - |
-#    spectacle_bug; hack_fix
-#    # Spectacular spectacle hack:
-#    #   abuse Macros to work around the Macro-deleting bug in 0.32
-#    #   also, add a conditional dep:
-#    %if 0%{?sailfishos_version} >= 30400
-#    BuildRequires: some-package
-#    %endif
-
 PkgBR:
   - cmake >= 3.25
   - extra-cmake-modules
@@ -118,7 +109,7 @@ ConfigOptions:
   - '-B%{_builddir}/_build'
   - '-DSDL_BACKEND=SDL2'
   # compiles but does not work on aarch64
-  # '-DOPENGL_BACKEND=GLES'
+  - '-DOPENGL_BACKEND=GLES'
   # '-DOPENGL_BACKEND=OpenGL'
   # '-DPREFIX='
   - '-DLIB_DIR=%{_libexecdir}/%{name}'
