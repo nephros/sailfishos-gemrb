@@ -181,7 +181,7 @@ sed -i "s#@@APPNAME@@#%{_appname}#g" %{buildroot}/%{_gamedatadir}/config/GemRB-d
 
 # Prepare a .desktop file for the demo
 install -d %{buildroot}%{_datadir}/applications
-install -D -m644 platforms/linux/gemrb.desktop %{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}-demo.desktop
+install -D -m644 platforms/linux/gemrb.desktop %{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}.desktop
 
 desktop-file-edit \
 --set-name="GemRB Demo" \
@@ -189,9 +189,9 @@ desktop-file-edit \
 --set-key=Terminal --set-value=false \
 --set-key=X-Nemo-Applicaton-Type --set-value=no-invoker \
 --set-icon=gemrb \
-%{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}-demo.desktop
+%{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}.desktop
 
-cat << EOF >> %{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}-demo.desktop
+cat << EOF >> %{buildroot}%{_datadir}/applications/%{_orgname}.%{_appname}.desktop
 [X-Sailjail]
 Permissions=Documents;Downloads;Audio
 OrganizationName=%{_orgname}
@@ -224,7 +224,7 @@ desktop-file-install --delete-original       \
 
 %files demo
 %defattr(-,root,root,-)
-%{_datadir}/applications/%{_orgname}.%{_appname}-demo.desktop
+%{_datadir}/applications/%{_orgname}.%{_appname}.desktop
 %{_gamedatadir}/demo/
 %{_gamedatadir}/GUIScripts/demo/
 # >> files demo

@@ -178,6 +178,6 @@ SubPackages:
           %endif
 
       Files:
-        - '%{_datadir}/applications/%{_orgname}.%{_appname}-demo.desktop'
+        - '%{_datadir}/applications/%{_orgname}.%{_appname}.desktop'
         - '%{_gamedatadir}/demo/'
         - '%{_gamedatadir}/GUIScripts/demo/'
