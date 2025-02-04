@@ -19,6 +19,7 @@ License:    GPLv2
 URL:        https://github.com/gemrb/gemrb
 Source0:    %{name}-%{version}.tar.gz
 Source1:    GemRB.cfg
+Source2:    GemRB-demo.cfg
 Source100:  gemrb.yaml
 Source101:  gemrb-rpmlintrc
 Patch0:     SFOS-no-ask-quit.patch

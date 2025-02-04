@@ -9,6 +9,7 @@ SCM: https://github.com/nephros/sailfishos-gemrb
 Sources:
     - '%{name}-%{version}.tar.gz'
     - GemRB.cfg
+    - GemRB-demo.cfg
 Patches:
   # ensure we don't get hanging applications waiting for ctrl-c
   - SFOS-no-ask-quit.patch
