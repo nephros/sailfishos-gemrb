@@ -1,8 +1,16 @@
 diff --git a/gemrb/plugins/SDLVideo/SDL20Video.cpp b/gemrb/plugins/SDLVideo/SDL20Video.cpp
-index 073db8367..7c24ae64b 100644
+index 073db8367..d17172164 100644
 --- a/gemrb/plugins/SDLVideo/SDL20Video.cpp
 +++ b/gemrb/plugins/SDLVideo/SDL20Video.cpp
-@@ -179,6 +179,13 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title, bool vsync)
+@@ -29,6 +29,7 @@
+ 
+ // don't move this up
+ #include <SDL2/SDL_syswm.h>
++#include <wayland-client-protocol.h>
+ 
+ using namespace GemRB;
+ 
+@@ -179,6 +180,13 @@ int SDL20VideoDriver::CreateSDLDisplay(const char* title, bool vsync)
  	}
  #endif
  
@@ -16,17 +24,3 @@ index 073db8367..7c24ae64b 100644
  #ifdef BAKE_ICON
  	SetWindowIcon(window);
  #endif
-diff --git a/gemrb/plugins/SDLVideo/SDL20Video.h b/gemrb/plugins/SDLVideo/SDL20Video.h
-index 0b7c3ef43..65404785d 100644
---- a/gemrb/plugins/SDLVideo/SDL20Video.h
-+++ b/gemrb/plugins/SDLVideo/SDL20Video.h
-@@ -24,6 +24,9 @@
- #include "SDLSurfaceSprite2D.h"
- #include "SDLVideo.h"
- 
-+#include <SDL2/SDL_syswm.h>
-+#include <wayland-client-protocol.h>
-+
- #if USE_OPENGL_BACKEND
- 	#include "GLSLProgram.h"
- #else
