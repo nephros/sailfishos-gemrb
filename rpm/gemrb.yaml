@@ -15,7 +15,6 @@ Patches:
   - SFOS-no-ask-quit.patch
   # Set up PA properties for SFOS at init
   - SFOS-pulseaudio-props.patch
-  - GLSL-shaders-gles3.patch
   # SDL2_force_landscape.patch
   # SDL2_touch_abs_coord.patch // works without this
   - SDL2_wayland_rotate.patch
@@ -110,8 +109,6 @@ ConfigOptions:
   - '-B%{_builddir}/_build'
   - '-DSDL_BACKEND=SDL2'
   # compiles but does not work on aarch64
-  # https://github.com/gemrb/gemrb/issues/1496
-  # https://github.com/gemrb/gemrb/issues/938
   - '-DOPENGL_BACKEND=GLES'
   # '-DOPENGL_BACKEND=OpenGL'
   # '-DPREFIX='
