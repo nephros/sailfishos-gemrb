@@ -15,6 +15,7 @@ Patches:
   - SFOS-no-ask-quit.patch
   # Set up PA properties for SFOS at init
   - SFOS-pulseaudio-props.patch
+  - SFOS-no-fog-alpha.patch
   # SDL2_force_landscape.patch
   # SDL2_touch_abs_coord.patch // works without this
   - SDL2_wayland_rotate.patch

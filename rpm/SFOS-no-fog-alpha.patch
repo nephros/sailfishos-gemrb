@@ -1,0 +1,12 @@
+diff --git a/gemrb/plugins/TISImporter/TISImporter.cpp b/gemrb/plugins/TISImporter/TISImporter.cpp
+index 87973801a..90ef4ff37 100644
+--- a/gemrb/plugins/TISImporter/TISImporter.cpp
++++ b/gemrb/plugins/TISImporter/TISImporter.cpp
+@@ -195,7 +195,6 @@ Holder<Sprite2D> TISImporter::GetTilePaletted(int index)
+ 
+ 	for (Color& c : buffer) {
+ 		std::swap(c.b, c.r); // argb format
+-		c.a = c.a ? c.a : 255; // alpha is unused by the originals but SDL will happily use it
+ 		if (ck == 0 && ckTest(c)) {
+ 			c = ColorGreen;
+ 			ck = colorkey_t(&c - buffer.data());
