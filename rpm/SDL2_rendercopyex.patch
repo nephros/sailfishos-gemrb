@@ -7,7 +7,7 @@ index 0b7c3ef43..84bd6db54 100644
  		SDL_Rect dst = RectFromRegion(rect);
  		SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
 -		int ret = SDL_RenderCopy(targetRenderer, texture, nullptr, &dst);
-+		int ret = SDL_RenderCopyEx(targetRenderer, texture, nullptr, nullptr, 90.0, NULL, SDL_FLIP_NONE);
++		int ret = SDL_RenderCopyEx(targetRenderer, texture, nullptr, nullptr, 270.0, NULL, SDL_FLIP_NONE);
  		if (ret != 0) {
  			Log(ERROR, "SDLVideo", "{}", SDL_GetError());
  		}
