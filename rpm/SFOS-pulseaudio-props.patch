@@ -1,25 +1,25 @@
 diff --git a/gemrb/plugins/OpenALAudio/OpenALAudio.cpp b/gemrb/plugins/OpenALAudio/OpenALAudio.cpp
-index 67bd9707f..4bdde6047 100644
+index a2446aad2..9cea149ff 100644
 --- a/gemrb/plugins/OpenALAudio/OpenALAudio.cpp
 +++ b/gemrb/plugins/OpenALAudio/OpenALAudio.cpp
-@@ -291,6 +291,10 @@ bool OpenALAudioDriver::Init(void)
- 	Log(MESSAGE, "OpenAL", "Initializing OpenAL driver:\nAL Version: {}\nAL Renderer: {}\nAL Vendor: {}",
- 	    version ? version : "", renderer ? renderer : "", vendor ? vendor : "");
+@@ -392,6 +392,10 @@ bool OpenALBackend::Init()
+ {
+ 	Log(MESSAGE, "OpenAL", "Initializing OpenAL driver");
  
 +	// SailfishOS: enable proper OS audio management:
 +	setenv("PULSE_PROP_application.name", "GemRB", 1);
 +	setenv("PULSE_PROP_media.role", "x-maemo", 1);
 +
- 	ALCdevice* device;
- 	ALCcontext* context;
- 
+ 	ALCdevice* device = alcOpenDevice(nullptr);
+ 	if (device == nullptr) {
+ 		Log(ERROR, "OpenAL", "Failed to acquire OpenAL device.");
 diff --git a/gemrb/plugins/SDLAudio/SDLAudio.cpp b/gemrb/plugins/SDLAudio/SDLAudio.cpp
-index be9d5544a..02004aa30 100644
+index 9d110fa07..888740975 100644
 --- a/gemrb/plugins/SDLAudio/SDLAudio.cpp
 +++ b/gemrb/plugins/SDLAudio/SDLAudio.cpp
-@@ -89,6 +89,9 @@ SDLAudio::~SDLAudio(void)
+@@ -326,6 +326,9 @@ int SDLAudioBackend::audioChannels = 0;
  
- bool SDLAudio::Init(void)
+ bool SDLAudioBackend::Init()
  {
 +	// SailfishOS: enable proper OS audio management:
 +	setenv("PULSE_PROP_application.name", "GemRB", 1);
