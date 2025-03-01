@@ -30,6 +30,7 @@ Patches:
   # SDL2_debug_messages.patch
   # SDL2_log_resize.patch
   - SDL2_log_and_rotate_on_resize.patch
+  - SDL2_rendercopyex.patch
 Requires:
   # '%{name}-demo'
 Description: |

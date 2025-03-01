@@ -29,6 +29,7 @@ Patch3:     SDL2_wayland_rotate.patch
 Patch4:     SDL2_wayland_rotate_link_wayland.patch
 Patch5:     SDL2_fullscreen_via_zero.patch
 Patch6:     SDL2_log_and_rotate_on_resize.patch
+Patch7:     SDL2_rendercopyex.patch
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(python3)
@@ -136,6 +137,8 @@ Links:
 %patch5 -p1
 # SDL2_log_and_rotate_on_resize.patch
 %patch6 -p1
+# SDL2_rendercopyex.patch
+%patch7 -p1
 # >> setup
 # << setup
 
