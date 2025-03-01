@@ -133,6 +133,8 @@ ConfigOptions:
   # '-DSVG_DIR'
   # '-DMENU_DIR'
   - '-DUSE_LIBVLC=OFF'
+  # while we have unclean patches:
+  - '-DDISABLE_WERROR=ON'
   # required??
   - 'CFLAGS="${CFLAGS} -DSDL_RESOLUTION_INDEPENDANCE"'
 Builder: none

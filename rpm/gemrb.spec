@@ -155,6 +155,7 @@ Links:
     -DSYSCONF_DIR=%{_gamedatadir}/config/ \
     -DICON_DIR=%{_datadir}/icons/hicolor/64x64/apps \
     -DUSE_LIBVLC=OFF \
+    -DDISABLE_WERROR=ON \
     CFLAGS="${CFLAGS} -DSDL_RESOLUTION_INDEPENDANCE"
 
 
