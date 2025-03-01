@@ -19,7 +19,7 @@ index 073db8367..d17172164 100644
 +	SDL_GetWindowWMInfo(window, &swminfo);
 +	wl_surface *sdl_wl_surface = swminfo.info.wl.surface;
 +	Log(MESSAGE, "SDL 2 Driver", "Rotating Wayland display");
-+	wl_surface_set_buffer_transform(sdl_wl_surface, WL_OUTPUT_TRANSFORM_270);
++	wl_surface_set_buffer_transform(sdl_wl_surface, WL_OUTPUT_TRANSFORM_90);
 +
  #ifdef BAKE_ICON
  	SetWindowIcon(window);
