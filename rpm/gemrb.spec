@@ -25,11 +25,7 @@ Source101:  gemrb-rpmlintrc
 Patch0:     SFOS-no-ask-quit.patch
 Patch1:     SFOS-pulseaudio-props.patch
 Patch2:     SFOS-no-fog-alpha.patch
-Patch3:     SDL2_wayland_rotate.patch
-Patch4:     SDL2_wayland_rotate_link_wayland.patch
-Patch5:     SDL2_fullscreen_via_zero.patch
-Patch6:     SDL2_log_and_rotate_on_resize.patch
-Patch7:     SDL2_rendercopyex.patch
+Patch3:     SDL2_rendercopyex.patch
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(python3)
@@ -129,16 +125,8 @@ Links:
 %patch1 -p1
 # SFOS-no-fog-alpha.patch
 %patch2 -p1
-# SDL2_wayland_rotate.patch
-%patch3 -p1
-# SDL2_wayland_rotate_link_wayland.patch
-%patch4 -p1
-# SDL2_fullscreen_via_zero.patch
-%patch5 -p1
-# SDL2_log_and_rotate_on_resize.patch
-%patch6 -p1
 # SDL2_rendercopyex.patch
-%patch7 -p1
+%patch3 -p1
 # >> setup
 # << setup
 
