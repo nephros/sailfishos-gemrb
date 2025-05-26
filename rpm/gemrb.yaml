@@ -148,7 +148,7 @@ Files:
   - '%{_gamedatadir}/'
   - '%exclude %{_gamedatadir}/demo'
   - '%exclude %{_gamedatadir}/GUIScripts/demo'
-  - '%exclude %{_datadir}/applications/gemrb.desktop'
+  - '%exclude %{_datadir}/applications/%{_orgname}.%{_appname}.desktop'
   - '%exclude %{_datadir}/metainfo/*.xml'
   - '%exclude %{_datadir}/metainfo'
 
