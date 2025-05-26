@@ -208,7 +208,6 @@ desktop-file-install --delete-original       \
 %defattr(-,root,root,-)
 %license COPYING
 %{_bindir}/*
-%{_datadir}/icons/*/scalable/apps/%{name}.svg
 %{_datadir}/icons/*/*/apps/*.png
 %{_libexecdir}/%{name}/
 %{_gamedatadir}/
